@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('adminApp.view1', ['ngRoute'])
+angular.module('adminApp.view1', [])
 
 .controller('View1Ctrl', [function() {
 

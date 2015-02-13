@@ -1,5 +1,17 @@
 # New Admin Page
 
+## Getting Started
+
+#### Install Dependencies
+```
+npm install
+```
+
+#### Run App locally
+```
+npm start
+```
+
 ## Directory Layout
 
 ```
@@ -23,19 +35,6 @@ e2e-tests/            --> end-to-end tests
   protractor-conf.js    --> Protractor config file
   scenarios.js          --> end-to-end scenarios to be run by Protractor
 ```
-
-## Getting Started
-
-#### Install Dependencies
-```
-npm install
-```
-
-#### Run App locally
-```
-npm start
-```
-
 
 ## Development Tools
 
@@ -63,3 +62,14 @@ The reason to use --save-dev is that it tells npm this is a development only dep
 ```
 gulp sass
 ```
+
+## Adding a Feature
+
+####1. Add to Index
+TODO
+
+####2. Add a template
+TODO
+
+####3. Add your controllers
+TODO

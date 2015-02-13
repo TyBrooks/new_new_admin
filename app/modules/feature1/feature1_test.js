@@ -2,13 +2,13 @@
 
 describe('adminApp.view1 module', function() {
 
-  beforeEach(module('myApp.view1'));
+  beforeEach(module('myApp.feature1'));
 
-  describe('view1 controller', function(){
+  describe('feature1 controller', function(){
 
     it('should ....', inject(function($controller) {
       //spec body
-      var view1Ctrl = $controller('View1Ctrl');
+      var view1Ctrl = $controller('Feature1Ctrl');
       expect(view1Ctrl).toBeDefined();
     }));
 

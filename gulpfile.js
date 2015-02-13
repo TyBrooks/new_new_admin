@@ -5,8 +5,8 @@ var tap = require('gulp-tap');
 var argv = require('yargs').argv;
 
 var paths = {
-  css: "app/stylesheets/compiled/",
-  sass: "app/stylesheets/scss/",
+  css: "app/stylesheets/build/",
+  sass: "app/stylesheets/src/",
   bower: "app/bower_components/"
 }
 

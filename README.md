@@ -1,4 +1,5 @@
-# New Admin Page
+# vl-angular-seed
+This is a seed repo designed according to VigLink's angular styleguide. Simply clone the project, and follow the Getting Started Instructions below. This repo is based on the [angular-seed](https://github.com/angular/angular-seed) project on GitHub, but customized for VigLink.
 
 ## Getting Started
 
@@ -21,18 +22,20 @@ npm start
 
 ```
 app/                    --> all of the source files for the application
-  app.css               --> default stylesheet
-  components/           --> all app specific modules
-	config/								--> All configuration files for the project: routing, etc.
-  view1/                --> the view1 view template and logic
-    view1.html            --> the partial template
-    view1.js              --> the controller logic
-    view1_test.js         --> tests of the controller
-  view2/                --> the view2 view template and logic
-    view2.html            --> the partial template
-    view2.js              --> the controller logic
-    view2_test.js         --> tests of the controller
-  app.js                --> main application module
+  bower_components      --> client side dependencies installed by Bower go here automatically
+  components/           --> non-bower libraries go here
+	config/								--> routing and other app-wide configuration goes here
+  modules/							--> all features go into their own folder here
+		feature1/                	 --> All the files necessary to implement one feature
+    	feature1.html            --> the partial template
+    	feature1_controller.js   --> the controller logic
+    	feature1_test.js         --> tests of the controller
+  	feature2/                	 --> the view2 view template and logic
+			...
+	stylesheets/					--> All app styling should go here
+		src/								--> All sass files go here. They should NOT be listed in the index
+		build/							--> These files should be listed in index.html. Compiled by grunt from sass source.
+  app.js                --> main application module; all dependency modules listed here
   index.html            --> app layout file (the main html template file of the app)
   index-async.html      --> just like index.html, but loads js files asynchronously
 karma.conf.js         --> config file for running unit tests with Karma

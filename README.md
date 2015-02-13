@@ -30,7 +30,7 @@ app/                    --> all of the source files for the application
     	feature1.html            --> the partial template
     	feature1_controller.js   --> the controller logic
     	feature1_test.js         --> tests of the controller
-  	feature2/                	 --> the view2 view template and logic
+  	feature2/                	 --> A second feature in a separate folder and module
 			...
 	stylesheets/					--> All app styling should go here
 		src/								--> All sass files go here. They should NOT be listed in the index

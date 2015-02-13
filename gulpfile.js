@@ -43,7 +43,8 @@ gulp.task('rename-app', function() {
       new RegExp(rstartCap + "module\\(" + roptSpaces + rquot + roptSpaces + rstopCap + argv.old + rstartCap + roptExtension + roptSpaces + rquot + rstopCap, "g"),
       new RegExp(rstartCap + "describe\\(" + roptSpaces + rquot + roptSpaces + rstopCap + argv.old + rstartCap + roptExtension + roptSpaces + "(?:.*\s?)?" + rquot + rstopCap, "g"),
       new RegExp(rstartCap + "ng\\-app\\=" + rquot + roptSpaces + rstopCap + argv.old + rstartCap + roptSpaces + rquot + rstopCap, "g"),
-      new RegExp(rstartCap + "module" + ".*" + "\\[" + ".*" + rquot + rstopCap + argv.old + rstartCap + roptExtension + roptSpaces + rquot + rstopCap, "gm")
+      // new RegExp(rstartCap + "module" + "(?:.|[\\\r\\\n])*" + "\\[" + "(?:.|[\\\r\\\n])*" + rquot + rstopCap + argv.old + rstartCap + roptExtension + roptSpaces + rquot + rstopCap, "g")
+      new RegExp(rstartCap + rquot + roptSpaces + rstopCap + argv.old + rstartCap + roptExtension + roptSpaces + rquot + rstopCap, "g")
     ]
     
     var replacement = "$1" + argv.new + "$2";

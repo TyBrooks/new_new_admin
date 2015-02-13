@@ -38,7 +38,6 @@ gulp.task('rename-app', function() {
   var roptExtension =   "(?:\\.\\S+)?"
   
   if ( argv.old && argv.new ) {
-    console.log(argv.old, argv.new)
     var regexps = [
       new RegExp(rstartCap + "module\\(" + roptSpaces + rquot + roptSpaces + rstopCap + argv.old + rstartCap + roptExtension + roptSpaces + rquot + rstopCap, "g"),
       new RegExp(rstartCap + "describe\\(" + roptSpaces + rquot + roptSpaces + rstopCap + argv.old + rstartCap + roptExtension + roptSpaces + "(?:.*\s?)?" + rquot + rstopCap, "g"),

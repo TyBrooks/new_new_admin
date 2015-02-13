@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var replace = require('gulp-replace');
+var tap = require('gulp-tap');
 var argv = require('yargs').argv;
 
 var paths = {
@@ -30,7 +31,8 @@ gulp.task('sass', function() {
 
 gulp.task('rename-app', function() {
   if ( argv.old && argv.new ) {
-    var regexs = [
+    console.log(argv.old, argv.new)
+    var regexps = [
       new RegExp("(module\\(\\s*)" + argv.old + "((?:\\..+)?\\s*\\))", "g"),
       new RegExp("(" + "describe\\(" + "\\s*" + ")" + argv.old + "(" + "(?:\\..+)?" + "\\s*" + "\\)" + ")", "g"),
       new RegExp("(" + "ng\\-app\\=" + "(?:\\'|\\\")" + "\\s*" + ")" + argv.old + "(" + "\\s+" + "(?:\\'|\\\")" + ")", "g")
@@ -41,9 +43,13 @@ gulp.task('rename-app', function() {
     gulp.src([
       bases.app + '**',
       "!" + paths.bower_components
-    ]).pipe( replace( regexs[0], replacement) )
-      .pipe( replace( regexs[1], replacement) )
-      .pipe( replace( regexs[2], replacement) )
+    ], {base: './'} )
+      .pipe( replace( regexps[0], replacement) )
+      .pipe( tap( function( file ) {
+        console.log( file.path );
+      } ) )
+      .pipe( replace( regexps[1], replacement) )
+      .pipe( replace( regexps[2], replacement) )
       .pipe( gulp.dest('./'))
   }
 })

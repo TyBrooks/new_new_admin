@@ -30,12 +30,20 @@ gulp.task('sass', function() {
 
 
 gulp.task('rename-app', function() {
+  //regexp pieces to make the semantics a little more clear
+  var rquot         =   "(?:\\'|\\\")";
+  var roptSpaces    =   "\\s*";
+  var rstartCap     =   "(";
+  var rstopCap      =   ")";
+  var roptExtension =   "(?:\\.\\S+)?"
+  
   if ( argv.old && argv.new ) {
     console.log(argv.old, argv.new)
     var regexps = [
-      new RegExp("(module\\(\\s*)" + argv.old + "((?:\\..+)?\\s*\\))", "g"),
-      new RegExp("(" + "describe\\(" + "\\s*" + ")" + argv.old + "(" + "(?:\\..+)?" + "\\s*" + "\\)" + ")", "g"),
-      new RegExp("(" + "ng\\-app\\=" + "(?:\\'|\\\")" + "\\s*" + ")" + argv.old + "(" + "\\s+" + "(?:\\'|\\\")" + ")", "g")
+      new RegExp(rstartCap + "module\\(" + roptSpaces + rquot + roptSpaces + rstopCap + argv.old + rstartCap + roptExtension + roptSpaces + rquot + rstopCap, "g"),
+      new RegExp(rstartCap + "describe\\(" + roptSpaces + rquot + roptSpaces + rstopCap + argv.old + rstartCap + roptExtension + roptSpaces + "(?:.*\s?)?" + rquot + rstopCap, "g"),
+      new RegExp(rstartCap + "ng\\-app\\=" + rquot + roptSpaces + rstopCap + argv.old + rstartCap + roptSpaces + rquot + rstopCap, "g"),
+      new RegExp(rstartCap + "module" + ".*" + "\\[" + ".*" + rquot + rstopCap + argv.old + rstartCap + roptExtension + roptSpaces + rquot + rstopCap, "gm")
     ]
     
     var replacement = "$1" + argv.new + "$2";
@@ -45,11 +53,9 @@ gulp.task('rename-app', function() {
       "!" + paths.bower_components
     ], {base: './'} )
       .pipe( replace( regexps[0], replacement) )
-      .pipe( tap( function( file ) {
-        console.log( file.path );
-      } ) )
       .pipe( replace( regexps[1], replacement) )
       .pipe( replace( regexps[2], replacement) )
+      .pipe( replace( regexps[3], replacement) )
       .pipe( gulp.dest('./'))
   }
 })

@@ -7,6 +7,11 @@
 npm install
 ```
 
+#### Rename App
+```
+gulp rename-app --old oldname --new newname
+```
+
 #### Run App locally
 ```
 npm start
@@ -60,7 +65,9 @@ The reason to use --save-dev is that it tells npm this is a development only dep
 #### 3. Gulp
 [Gulp](http://gulpjs.com/) is a streaming build system with a large number of built in libraries that allow you to process and manipulate files in your project as streams of data. An example would be running your JS files through a minification process, or compiling your Sass into CSS. This is configured in the Gulpfile. An example command that would run the 'sass' task as defined in that file:
 ```
-gulp sass
+gulp sass			--> Compiles scss into css
+gulp watch 		--> Watches files affected by above, runs all associated jobs on change
+gulp rename-app --old oldname --new newname 	--> Renames app
 ```
 
 ## Adding a Feature

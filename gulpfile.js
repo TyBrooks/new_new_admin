@@ -12,7 +12,7 @@ var bases = {
 var paths = {
   css: "app/stylesheets/build/",
   sass: "app/stylesheets/src/*.scss",
-  bootstrap: "app/bower_components/bootstrap-sass/assets/stylesheets/*.scss"
+  bootstrap: "app/stylesheets/src/bootstrap/bootstrap.scss"
 }
 
 

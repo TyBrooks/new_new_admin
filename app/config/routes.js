@@ -1,12 +1,35 @@
 angular.module('adminApp')
 
-.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+.config(['$stateProvider', '$urlRouterProvider', '$provide', function($stateProvider, $urlRouterProvider, $provide) {
+  $provide.service('authService', [ '$http', 'settings', function( $http, settings ) {
+    this.sendAuthRequest = function() {
+      return $http({
+        method: 'GET',
+        url: settings.apiURL + 'accounts/myself'
+      });
+    }
+  } ] )
+  
+  
   $urlRouterProvider.otherwise('/welcome');
   
   $stateProvider
   
     .state('nav', {
-      url: "/",
+      resolve: {
+        auth: function(authService) {
+          return authService.sendAuthRequest()
+            .then(
+              function(data) {
+                return { data: data, success: true};
+              },
+              function() {
+                return { success: false };
+              }
+            )
+        }
+      },
+      url: "",
       abstract: true,
       templateUrl: 'modules/nav/nav.html',
       controller: 'NavCtrl'

@@ -18,10 +18,6 @@
 	<script src="../bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
-  <ul class="menu">
-    <li><a ui-sref="nav.feature1">view1</a></li>
-    <li><a ui-sref="nav.feature2">view2</a></li>
-  </ul>
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -34,12 +30,16 @@
   -->
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-	<script src="lib/angular-ui-bootstrap/ui-bootstrap-0.12.0.js"></script>
+	<script src="lib/angular-ui-bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
   <script src="app.js"></script>
-	<script src="config/routes.js"></script>
+		
+	<script src='config/settings.js'></script>
   
 	<script src="modules/feature1/feature1_controller.js"></script>
   <script src="modules/feature2/feature2_controller.js"></script>
   <script src="modules/nav/nav_controller.js"></script>
+	<script src='modules/nav/APIFactories/adminAPI.js'></script>
+		
+	<script src="config/routes.js"></script>
 </body>
 </html>

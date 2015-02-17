@@ -47,10 +47,10 @@ angular.module('adminApp')
       controller: 'Feature1Ctrl'
     })
     
-    .state('nav.feature2', {
-      url: "/feature2",
-      templateUrl: 'modules/feature2/feature2.html',
-      controller: 'Feature2Ctrl'
+    .state('nav.elasticSearch', {
+      url: "/es",
+      templateUrl: 'modules/elastic_search/elastic_search.html',
+      controller: 'ElasticSearchCtrl'
     })
     
     .state('nav.customInsert', {

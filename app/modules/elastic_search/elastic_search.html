@@ -1,0 +1,140 @@
+<div>
+    <div class="row">
+        <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> Elastic Search</h1>
+    </div>
+
+    <div class="row">
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="well">
+                <form ng-submit="queryProducts()">
+                    <table>
+                        <tr>
+                            <td><label for='product'>Product</label></td>
+                            <td><input type='text' name='product' ng-model="product"></td>
+                            <td></td>
+                            <td><label for='not_product'>NOT Product</label></td>
+                            <td><input type='text' name='not_product' ng-model="not_product"></td>
+
+                        </tr>
+                        <tr>
+                            <td><label for='source'>Source</label></td>
+                            <td><input type='text' name='source' ng-model="source"></td>
+                            <td></td>
+                            <td><label for='source'>NOT Source</label></td>
+                            <td><input type='text' name='not_source' ng-model="not_source"></td>
+                        </tr>
+
+                        <tr>
+                            <td><label for='low'>EPC (low, high)</label></td>
+                            <td><input type='text' name="low" ng-model="epc_low"></td>
+                            <td><input type='text' name="high" ng-model="epc_high"></td>
+                        </tr>
+                        <tr>
+                            <td><label for='low'>Price (low, high)</label></td>
+                            <td><input type='text' name="price_low" ng-model="price_low"></td>
+                            <td><input type='text' name="price_high" ng-model="price_high"></td>
+                        </tr>
+                        <tr>
+                            <td><label for='merchant'>Merchant</label></td>
+                            <td><input type='text' name="merchant" ng-model="merchant"></td>
+                            <td></td>
+                            <td><label for='merchant'>NOT Merchant</label></td>
+                            <td><input type='text' name="not_merchant" ng-model="not_merchant"></td>
+                        </tr>
+
+                        <tr>
+                            <td><label for='country'>Country</label></td>
+                            <td><input type='text' name="country" ng-model="country"></td>
+                        </tr>
+                        <tr>
+                            <td><label for='category'>Category</label></td>
+                            <td><input type='text' name="category" ng-model="category"></td>
+                        </tr>
+                        <tr>
+                            <td><label for='expiration'>Expiration Date</label></td>
+                            <td><input ui-date name="expiration" ng-model="expiration"></td>
+                        </tr>
+                        <tr>
+                            <td><label for='listingid'>Listing Id</label></td>
+                            <td><input type='text' name="listingid" ng-model="listingid"></td>
+                        </tr>
+                        <tr>
+                            <td><label for='asin'>ASIN</label></td>
+                            <td><input type='text' name="asin" ng-model="asin"></td>
+                        </tr>
+                        <tr>
+                            <td><label for='upc'>UPC</label></td>
+                            <td><input type='text' name="upc" ng-model="upc"></td>
+                        </tr>
+                        <tr>
+                            <td><label for='offerid'>Offer id</label></td>
+                            <td><input type='text' name="offerid" ng-model="offerid"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type='submit' class="btn btn-primary"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </article>
+    </div>
+    <div class="row">
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <table class="table table-bordered table-condensed">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Product Name</th>
+                    <th>source</th>
+                    <th>merchantName</th>
+                    <th>epc</th>
+                    <th>country</th>
+                    <th>price</th>
+                    <th>score</th>
+                    <th>expiration date</th>
+                    <th>category</th>
+                    <th>Time To Live</th>
+                    <th>targetUrl</th>
+                    <th>productId</th>
+                    <th>asin</th>
+                    <th>upc</th>
+                    <th>listingID</th>
+                    <th ng-if="source == 'shz'">Offer Exists</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="product in products">
+                        <td>{{$index + 1 + (currentPage - 1) * perPage}}</td>
+                        <td>{{product['_source']['displayName']}}</td>
+                        <td>{{product['_source']['source']}}</td>
+                        <td>{{product['_source']['merchantName']}}</td>
+                        <td>{{product['_source']['epc']}}</td>
+                        <td>{{product['_source']['country']}}</td>
+                        <td>{{product['_source']['price']}}</td>
+                        <td>{{product['_score']}}</td>
+                        <td>{{formatExpirationDate(product['_source']['expirationDate']) | date: "MM/dd/yyyy"}}
+                        </td>
+                        <td>{{product['_source']['category']}}</td>
+                        <td>{{product['_source']['_ttl']}}</td>
+                        <td width='200'><a href="{{product['_source']['targetUrl']}}" target="_blank">{{product['_source']['targetUrl']}}</a></td>
+                        <td>{{product['_source']['productId']}}</td>
+                        <td>{{product['_source']['asin'][0]}}</td>
+                        <td>{{product['_source']['upc'][0]}}</td>
+                        <td>{{product['_source']['listingId']}}</td>
+                        <td ng-if="source == 'shz'">{{offers[product['_source']['listingId']]}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="dt-toolbar-footer">
+                <div class="col-xs-12 col-sm-12 col-lg-12">
+                    <div id="dt_basic_paginate" class="dataTables_paginate paging_simple_numbers">
+                        <pagination items-per-page="perPage" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" ng-change="pageChanged()"></pagination>
+                    </div>
+                </div>
+            </div>
+
+        </article>
+    </div>
+</div>

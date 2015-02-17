@@ -7,5 +7,6 @@ window.adminApp = angular.module('adminApp', [
   'adminApp.nav',
   'adminApp.feature1',
   'adminApp.feature2',
-  'adminApp.customInsert'
+  'adminApp.customInsert',
+  'adminApp.sidDecoder'
 ]);

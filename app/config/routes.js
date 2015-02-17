@@ -59,4 +59,10 @@ angular.module('adminApp')
       controller: 'CustomInsertCtrl'
     })
     
+    .state('nav.sidDecoder', {
+      url: "/sid-decoder",
+      templateUrl: "modules/sid_decoder/sid_decoder.html",
+      controller: "SidDecoderCtrl"
+    })
+    
 }])

@@ -102,8 +102,8 @@ In app/modules/main/nav.html, find the accordion-group that your feature fits in
 ```
 The value of 'heading' sets the accordion box text, the value of ui-sref is the name of the router state, and the <li> text should be the display name of your feature.
 	
-####4. Add or script your files
+####5. Add or script your files
 You'll need the actual controller and template file that you pointed your router at. These should live under the app/modules/<feature_name>/ directory. All logic specific to your feature should go in this folder, but if you use directives or filters that have a general application, you should add them to app/directive or app/filters instead.
 
-####5. Add your JS files to index.html
+####6. Add your JS files to index.html
 Make sure you add all your JS files to app/index.html.

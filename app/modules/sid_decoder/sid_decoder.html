@@ -1,0 +1,28 @@
+<div>
+    <div class="row">
+        <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> Click SID Decoder</h1>
+    </div>
+
+    <div class="row">
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="well">
+                <form ng-submit="decodeSID(sid)">
+                    <label for='sid'>Click SID: </label>
+                    <input type='text' name='sid' ng-model="sid">
+                    <input type='submit' value="Submit">
+                </form>
+            </div>
+        </article>
+    </div>
+    <div class="row">
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="well">
+                <ul>
+                    <li>Timestamp: {{output.timestamp}}</li>
+                    <li>User ID: {{output.user_id}}</li>
+                    <li>Member ID: {{output.member_id}}</li>
+                </ul>
+            </div>
+        </article>
+    </div>
+</div>

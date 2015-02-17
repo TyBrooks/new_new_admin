@@ -25,13 +25,16 @@ app/                    --> all of the source files for the application
   bower_components      --> client side dependencies installed by Bower go here automatically
   components/           --> non-bower libraries go here
 	config/								--> routing and other app-wide configuration goes here
+	directives/
+	filters/
   modules/							--> all features go into their own folder here
 		feature1/                	 --> All the files necessary to implement one feature
     	feature1.html            --> the partial template
+			feature1.list.html			 --> a subview of feature1
     	feature1_controller.js   --> the controller logic
     	feature1_test.js         --> tests of the controller
   	feature2/                	 --> A second feature in a separate folder and module
-			...
+			...		
 	stylesheets/					--> All app styling should go here
 		src/								--> All sass files go here. They should NOT be listed in the index
 		build/							--> These files should be listed in index.html. Compiled by grunt from sass source.

@@ -4,15 +4,18 @@ var replace = require('gulp-replace');
 var tap = require('gulp-tap');
 var argv = require('yargs').argv;
 
-var paths = {
-  css: "app/stylesheets/build/",
-  sass: "app/stylesheets/src/",
+var bases = {
+  app: "app/",
   bower: "app/bower_components/"
 }
 
-var bases = {
-  app: "app/"
+var paths = {
+  css: "app/stylesheets/build/",
+  sass: "app/stylesheets/src/*.scss",
+  bootstrap: "app/bower_components/bootstrap-sass/assets/stylesheets/*.scss"
 }
+
+
 
 gulp.task('default', function() {
   
@@ -23,7 +26,7 @@ gulp.task('watch', function() {
 })
 
 gulp.task('sass', function() {
-  gulp.src(paths.sass + 'app.scss')
+  gulp.src([paths.sass, paths.bootstrap])
     .pipe(sass())
     .pipe(gulp.dest(paths.css))
 })
@@ -50,7 +53,7 @@ gulp.task('rename-app', function() {
     
     gulp.src([
       bases.app + '**',
-      "!" + paths.bower_components
+      "!" + bases.bower_components
     ], {base: './'} )
       .pipe( replace( regexps[0], replacement) )
       .pipe( replace( regexps[1], replacement) )

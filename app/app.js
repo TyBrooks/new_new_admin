@@ -4,7 +4,8 @@
 window.adminApp = angular.module('adminApp', [
   'ui.router',
   'ui.bootstrap',
+  'adminApp.nav',
   'adminApp.feature1',
   'adminApp.feature2',
-  'adminApp.nav'
+  'adminApp.customInsert'
 ]);

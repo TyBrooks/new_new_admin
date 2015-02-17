@@ -53,4 +53,10 @@ angular.module('adminApp')
       controller: 'Feature2Ctrl'
     })
     
+    .state('nav.customInsert', {
+      url: "/custom-insert",
+      templateUrl: 'modules/custom_insert/custom_insert.html',
+      controller: 'CustomInsertCtrl'
+    })
+    
 }])

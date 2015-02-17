@@ -1,4 +1,4 @@
-# vl-angular-seed
+# vl-admin-app
 This is a seed repo designed according to VigLink's angular styleguide. Simply clone the project, and follow the Getting Started Instructions below. This repo is based on the [angular-seed](https://github.com/angular/angular-seed) project on GitHub, but customized for VigLink.
 
 ## Getting Started
@@ -6,11 +6,6 @@ This is a seed repo designed according to VigLink's angular styleguide. Simply c
 #### Install Dependencies
 ```
 npm install
-```
-
-#### Rename App
-```
-gulp rename-app --old oldname --new newname
 ```
 
 #### Run App locally
@@ -22,11 +17,11 @@ npm start
 
 ```
 app/                    --> all of the source files for the application
-  bower_components      --> client side dependencies installed by Bower go here automatically
-  components/           --> non-bower libraries go here
+  build/           			--> for compiled files like css that's been created from sass.
 	config/								--> routing and other app-wide configuration goes here
 	directives/						--> all directives go here, especially universally applicable ones
 	filters/							--> all filters go here
+	lib/									--> A place where all your 3rd party libraries go.
   modules/							--> all features go into their own folder here
 		feature1/                	 --> All the files necessary to implement one feature
     	feature1.html            --> the partial template
@@ -36,15 +31,14 @@ app/                    --> all of the source files for the application
   	feature2/                	 --> A second feature in a separate folder and module
 			...		
 	stylesheets/					--> All app styling should go here
-		src/								--> All sass files go here. They should NOT be listed in the index
-		build/							--> These files should be listed in index.html. Compiled by grunt from sass source.
   app.js                --> main application module; all dependency modules listed here
   index.html            --> app layout file (the main html template file of the app)
-  index-async.html      --> just like index.html, but loads js files asynchronously
-karma.conf.js         --> config file for running unit tests with Karma
+bower_components/     --> client side dependencies installed by Bower go here automatically
 e2e-tests/            --> end-to-end tests
   protractor-conf.js    --> Protractor config file
   scenarios.js          --> end-to-end scenarios to be run by Protractor
+node_modules					--> a folder where all your node.js dependencies go.
+karma.conf.js         --> config file for running unit tests with Karma
 ```
 
 ## Development Tools
@@ -78,11 +72,22 @@ gulp rename-app --old oldname --new newname 	--> Renames app
 
 ## Adding a Feature
 
-####1. Add to Index
-TODO
+####1. Add a folder for your module
+Create a new folder for your feature under app/modules. All features should have their own folder. This is where all your logic for your feature should go.
 
-####2. Add a template
-TODO
+####2. Add your module to the app initialization.
+In app/app.js, you'll need to add your module to the list of modules that the app initializes. Your module should be named in the format of <appName>.<moduleName>. E.g. adminApp.featureOne.
 
-####3. Add your controllers
-TODO
+####3. Add a route for your feature.
+In app/config/routes.js you'll need to add a route for your feature. Here's an example route:
+```
+    .state('nav.customInsert', {
+      url: "/custom-insert",
+      templateUrl: 'modules/custom_insert/custom_insert.html',
+      controller: 'CustomInsertCtrl'
+    })
+```
+Your feature should have the state 'nav.<featureName>', since all features are subviews within the navigation layout that the 'nav' state loads. You'll also need to provide the location of your html subview template and the name of the controller for your feature.
+	
+####4. Add or script your files
+You'll need the actual controller and template file that you pointed your router at. These should live under the app/modules/<feature_name>/ directory. All logic specific to your feature should go in this folder, but if you use directives or filters that have a general application, you should add them to app/directive or app/filters instead.

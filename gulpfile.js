@@ -7,19 +7,18 @@ var concat = require('gulp-concat');
 
 var bases = {
   app: "app/",
-  bower: "app/bower_components/"
+  bower: "app/bower_components/",
+  build: "app/build/"
 }
 
 var paths = {
   style: {
-    target:     "app/stylesheets/build/target/",
-    sassFiles:  "app/stylesheets/src/*.scss",
+    target:     bases.build + "/target",
+    sassFiles:  "app/stylesheets/*.scss",
     bootstrap:  "app/stylesheets/src/bootstrap/bootstrap.scss",
-    build:      "app/stylesheets/build/"
+    build:      bases.build
   }
 }
-
-
 
 gulp.task('default', function() {
   

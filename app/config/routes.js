@@ -31,13 +31,13 @@ angular.module('adminApp')
       },
       url: "",
       abstract: true,
-      templateUrl: 'modules/nav/nav.html',
+      templateUrl: 'modules/main/nav.html',
       controller: 'NavCtrl'
     })
     
     .state('nav.welcome', {
       url: "/welcome",
-      templateUrl: "modules/nav/nav.welcome.html",
+      templateUrl: "modules/main/nav.welcome.html",
       controller: "NavCtrl"
     })
   

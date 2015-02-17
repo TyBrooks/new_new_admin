@@ -15,7 +15,6 @@ var paths = {
   style: {
     target:     bases.build + "/target",
     sassFiles:  "app/stylesheets/*.scss",
-    bootstrap:  "app/stylesheets/src/bootstrap/bootstrap.scss",
     build:      bases.build
   }
 }
@@ -29,7 +28,7 @@ gulp.task('watch', function() {
 })
 
 gulp.task('sass', function() {
-  gulp.src([paths.style.sassFiles, paths.style.bootstrap])
+  gulp.src([paths.style.sassFiles])
     .pipe(sass())
     .pipe(gulp.dest(paths.style.target))
     .pipe(concat('bundle.css'))

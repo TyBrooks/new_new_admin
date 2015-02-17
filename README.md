@@ -89,5 +89,21 @@ In app/config/routes.js you'll need to add a route for your feature. Here's an e
 ```
 Your feature should have the state 'nav.<featureName>', since all features are subviews within the navigation layout that the 'nav' state loads. You'll also need to provide the location of your html subview template and the name of the controller for your feature.
 	
+####4. Add your feature to the navigation bar
+In app/modules/main/nav.html, find the accordion-group that your feature fits in, or add a new one. The angular router we use (ui-router) uses anchor tags with ui-sref instead of the usual href. 'ui-sref' should match the name of the state you just added in step #3. Ex:
+```
+		<accordion-group heading='OpsTools'>
+			<ul class='list-unstyled'>
+				<a ui-sref='nav.feature1'><li>Elastic Search</li></a>
+				<a ui-sref='nav.feature1'><li>Click SID Decoder</li></a>
+				<a ui-sref='nav.customInsert'><li>Custom Insert</li></a>
+			</ul>
+		</accordion-group>
+```
+The value of 'heading' sets the accordion box text, the value of ui-sref is the name of the router state, and the <li> text should be the display name of your feature.
+	
 ####4. Add or script your files
 You'll need the actual controller and template file that you pointed your router at. These should live under the app/modules/<feature_name>/ directory. All logic specific to your feature should go in this folder, but if you use directives or filters that have a general application, you should add them to app/directive or app/filters instead.
+
+####5. Add your JS files to index.html
+Make sure you add all your JS files to app/index.html.

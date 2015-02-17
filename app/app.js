@@ -4,5 +4,6 @@
 angular.module('adminApp', [
   'ui.router',
   'adminApp.feature1',
-  'adminApp.feature2'
+  'adminApp.feature2',
+  'adminApp.nav'
 ]);

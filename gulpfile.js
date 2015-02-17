@@ -3,6 +3,7 @@ var sass = require('gulp-sass');
 var replace = require('gulp-replace');
 var tap = require('gulp-tap');
 var argv = require('yargs').argv;
+var concat = require('gulp-concat');
 
 var bases = {
   app: "app/",
@@ -10,9 +11,12 @@ var bases = {
 }
 
 var paths = {
-  css: "app/stylesheets/build/",
-  sass: "app/stylesheets/src/*.scss",
-  bootstrap: "app/stylesheets/src/bootstrap/bootstrap.scss"
+  style: {
+    target:     "app/stylesheets/build/target/",
+    sassFiles:  "app/stylesheets/src/*.scss",
+    bootstrap:  "app/stylesheets/src/bootstrap/bootstrap.scss",
+    build:      "app/stylesheets/build/"
+  }
 }
 
 
@@ -22,15 +26,16 @@ gulp.task('default', function() {
 })
 
 gulp.task('watch', function() {
-  gulp.watch(paths.scss + '*.scss', ['sass']);
+  gulp.watch(paths.style.sassFiles, ['sass']);
 })
 
 gulp.task('sass', function() {
-  gulp.src([paths.sass, paths.bootstrap])
+  gulp.src([paths.style.sassFiles, paths.style.bootstrap])
     .pipe(sass())
-    .pipe(gulp.dest(paths.css))
-})
-
+    .pipe(gulp.dest(paths.style.target))
+    .pipe(concat('bundle.css'))
+    .pipe(gulp.dest(paths.style.build));
+});
 
 gulp.task('rename-app', function() {
   //regexp pieces to make the semantics a little more clear

@@ -25,8 +25,8 @@ app/                    --> all of the source files for the application
   bower_components      --> client side dependencies installed by Bower go here automatically
   components/           --> non-bower libraries go here
 	config/								--> routing and other app-wide configuration goes here
-	directives/
-	filters/
+	directives/						--> all directives go here, especially universally applicable ones
+	filters/							--> all filters go here
   modules/							--> all features go into their own folder here
 		feature1/                	 --> All the files necessary to implement one feature
     	feature1.html            --> the partial template

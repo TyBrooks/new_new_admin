@@ -10,7 +10,7 @@ angular.module('adminApp.userSearch')
               .success(function(data, status, headers, config) {
                   $scope.user = data;
                   if(data.userType == 'Installable')
-                      $scope.getPlugins($routeParams.id);
+                      $scope.getPlugins($stateParams.id);
               })
               .error(function(data, status, headers, config) {
                   $scope.error = {"type" : "error", "flag": "times", "msg": data}

@@ -1,8 +1,8 @@
 angular.module('adminApp.userSearch')
 
 .controller('PluginDetailCtrl',
-    ['$scope', '$http', '$routeParams', 'settings',
-    function($scope, $http, $routeParams, settings) {
+    ['$scope', '$http', '$stateParams', 'settings',
+    function($scope, $http, $stateParams, settings) {
     
     var apiURL = settings.apiURL;
     
@@ -25,5 +25,5 @@ angular.module('adminApp.userSearch')
                 $scope.error = {"type" : "error", "flag": "times", "msg": data}
             });
     }
-    $scope.getPlugin($routeParams.id);
+    $scope.getPlugin($stateParams.id);
 }]);

@@ -1,8 +1,8 @@
 angular.module('adminApp.userSearch')
 
 .controller('AccountDetailCtrl',
-  ['$scope', '$http', '$routeParams', 'settings',
-  function($scope, $http, $routeParams, settings) {
+  ['$scope', '$http', '$stateParams', 'settings',
+  function($scope, $http, $stateParams, settings) {
     var apiURL = settings.apiURL;
     
     //TODO update when account has gender or profile image url
@@ -74,7 +74,7 @@ angular.module('adminApp.userSearch')
                   $scope.paymentTypes = data;
               });
     }
-    $scope.accountId = $routeParams.id;
+    $scope.accountId = $stateParams.id;
     // Pagination
       $scope.pageChanged = function() {
           console.log('Page changed to: ' + $scope.currentPage);

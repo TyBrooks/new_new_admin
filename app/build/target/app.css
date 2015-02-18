@@ -4892,6 +4892,7 @@ button.close {
   padding: 10px;
   background-image: linear-gradient(to bottom, #f3f3f3, #e2e2e2);
   background-color: #f3f3f3;
+  border-right: 1px solid grey;
   border-bottom: 1px solid grey;
   height: 56px; }
   #admin-header #logo img {
@@ -4906,6 +4907,7 @@ button.close {
   margin-top: 56px;
   background-color: #F5F5F5;
   border-right: 1px solid grey;
+  border-bottom: 1px solid grey;
   width: 300px; }
   #nav-panel .panel {
     border-radius: 0;
@@ -4929,6 +4931,7 @@ button.close {
   #main-panel .breadcrumb-section {
     height: 44px;
     background-color: #F5F5F5;
-    border-bottom: 1px solid grey; }
+    border-bottom: 1px solid grey;
+    border-right: 1px solid grey; }
   #main-panel .main-section {
     padding: 0 20px; }

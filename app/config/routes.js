@@ -66,9 +66,9 @@ angular.module('adminApp')
     })
     
     .state('nav.userSearch', {
-      url: "/user-search",
+      url: "/account-search",
       templateUrl: "modules/user_search/account_search.html",
-      controller: "UserSearchCtrl"
+      controller: "AccountSearchCtrl"
     })
     
     .state('nav.accountDetail', {

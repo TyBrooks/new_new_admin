@@ -6,7 +6,6 @@ window.adminApp = angular.module('adminApp', [
   'ui.bootstrap',
   'adminApp.nav',
   'adminApp.filters',
-  'adminApp.feature1',
   'adminApp.elasticSearch',
   'adminApp.customInsert',
   'adminApp.sidDecoder',

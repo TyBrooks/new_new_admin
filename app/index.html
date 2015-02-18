@@ -25,19 +25,18 @@
 
   <div ui-view></div>
 
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
+	<!-- Library Files for angular, etc. -->
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 	<script src="lib/angular-ui-bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
-  <script src="app.js"></script>
 		
+	<!-- General app-specific JS files -->
+	<script src="app.js"></script>
 	<script src='config/settings.js'></script>
 	<script src='filters/app_filters.js'></script>
   
+	<!-- Feature specific JS goes here -->
 	<script src="modules/main/nav_controller.js"></script>
-	<script src="modules/feature1/feature1_controller.js"></script>
 	<script src="modules/custom_insert/custom_insert_controller.js"></script>
 	<script src="modules/sid_decoder/sid_decoder_controller.js"></script>
 	<script src="modules/elastic_search/elastic_search_controller.js"></script>
@@ -46,6 +45,7 @@
 	<script src="modules/user_search/user_detail_controller.js"></script>
 	<script src="modules/user_search/plugin_detail_controller.js"></script>
 		
+	<!-- JS that should be loaded last -->
 	<script src="config/routes.js"></script>
 </body>
 </html>

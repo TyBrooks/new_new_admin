@@ -7,7 +7,7 @@ angular.module('adminApp.elasticSearch', [])
   //TODO update when account has gender or profile image url
   $scope.searchProducts = function(pageNo, limit) {
       $scope.products = [];
-        $http.post(apiURL + "search/products", {
+        $http.post(apiURL + "/search/products", {
                                                         product: this.product,
                                                         not_product: this.not_product,
                                                         source: this.source,
@@ -50,7 +50,7 @@ angular.module('adminApp.elasticSearch', [])
           product = products[index];
           productId = product["_source"]["listingId"];
             $scope.offers[productId] = "Checking...";
-            $http.get(apiURL + "products/check_offer_exists/" + productId)
+            $http.get(apiURL + "/products/check_offer_exists/" + productId)
                 .success(function(data, status, headers, config) {
                    $scope.offers[data.product_id] = "OK";
                 }).error(function(data, status, headers, config) {

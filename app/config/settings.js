@@ -1,5 +1,5 @@
 adminApp.config(['$provide', function($provide) {
-  $provide.service('settings', function() {
-    this.apiURL = 'https://admin.viglink.com/'
-  })
+  $provide.service('settings', ['$window', function($window) {
+    this.apiURL = $window.location.origin;
+  } ] );
 } ] );

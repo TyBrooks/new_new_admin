@@ -5,7 +5,7 @@ angular.module('adminApp')
     this.sendAuthRequest = function() {
       return $http({
         method: 'GET',
-        url: settings.apiURL + 'accounts/myself'
+        url: settings.apiURL + '/accounts/myself'
       });
     }
   } ] )

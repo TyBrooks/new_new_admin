@@ -17,12 +17,12 @@ npm start
 
 ```
 app/                    --> all of the source files for the application
-  build/								--> for compiled files like css that's been created from sass.
+	build/								--> for compiled files like css that's been created from sass.
 	config/								--> routing and other app-wide configuration goes here
 	directives/						--> all directives go here, especially universally applicable ones
 	filters/							--> all filters go here
 	lib/									--> A place where all your 3rd party libraries go.
-  modules/							--> all features go into their own folder here
+	modules/							--> all features go into their own folder here
 		feature1/						--> All the files necessary to implement one feature
 			feature1.html           --> the partial template
 			feature1.list.html			--> a subview of feature1
@@ -31,12 +31,12 @@ app/                    --> all of the source files for the application
 		feature2/                 --> A second feature in a separate folder and module
 			...
 	stylesheets/					--> All app styling should go here
-  app.js                --> main application module; all dependency modules listed here
-  index.html            --> app layout file (the main html template file of the app)
+	app.js                --> main application module; all dependency modules listed here
+	index.html            --> app layout file (the main html template file of the app)
 bower_components/     --> client side dependencies installed by Bower go here automatically
 e2e-tests/            --> end-to-end tests
-  protractor-conf.js    --> Protractor config file
-  scenarios.js          --> end-to-end scenarios to be run by Protractor
+	protractor-conf.js    --> Protractor config file
+	scenarios.js          --> end-to-end scenarios to be run by Protractor
 node_modules/					--> a folder where all your node.js dependencies go.
 karma.conf.js         --> config file for running unit tests with Karma
 ```

@@ -37,7 +37,7 @@
                 <tbody>
                 <tr ng-repeat="account in accountResults" ng-if="accountResults != null && accountResults.length > 0">
                     <td>{{account.id}}</td>
-                    <td><a href="#users/account_detail?id={{account.id}}">{{account.email}}</a></td>
+                    <td><a ui-sref='nav.accountDetail({id: account.id})'>{{account.email}}</a></td>
                     <td>{{account.emailVerified}}</td>
                     <td>{{account.status}}</td>
                     <td>{{account.nick}}</td>

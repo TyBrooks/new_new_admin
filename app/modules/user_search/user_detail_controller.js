@@ -1,8 +1,8 @@
 angular.module('adminApp.userSearch')
 
 .controller('UserDetailCtrl',
-  ['$scope', '$http', '$routeParams', 'settings',
-  function($scope, $http, $routeParams, settings) {
+  ['$scope', '$http', '$stateParams', 'settings',
+  function($scope, $http, $stateParams, settings) {
       var apiURL = settings.apiURL;
     
       $scope.getUser = function(userId) {
@@ -22,6 +22,6 @@ angular.module('adminApp.userSearch')
                   $scope.plugins = data;
               });
       }
-      $scope.getUser($routeParams.id);
+      $scope.getUser($stateParams.id);
 
 }])

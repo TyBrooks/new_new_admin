@@ -2,9 +2,9 @@
     <div class="row">
         <h1 class="page-title txt-color-blueDark">
             <i class="fa-fw fa fa-home"></i>
-            <a href="#users/search_accounts">Search Accounts</a>
-            <span>> <a href="#users/account_detail?id={{plugin.account_id}}">{{plugin.user_email}}</a></span>
-            <span>> <a href="#users/user_detail?id={{plugin.user_id}}">{{plugin.user_name}}</a></span>
+            <a ui-sref='nav.userSearch'>Search Accounts</a>
+            <span>> <a ui-sref='nav.accountDetail({id: plugin.account_id})'>{{plugin.user_email}}</a></span>
+            <span>> <a ui-sref='nav.userDetail({plugin.user_id})'>{{plugin.user_name}}</a></span>
             <span>> {{plugin.type}}</span>
         </h1>
     </div>

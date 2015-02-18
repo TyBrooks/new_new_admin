@@ -5,6 +5,8 @@
 $sub-header-height: 44px;
 $header-height: 56px;
 
+$nav-panel-width: 300px;
+
 $nav-panel-bg-color: #F5F5F5;
 
 // Header styles
@@ -27,27 +29,52 @@ $nav-panel-bg-color: #F5F5F5;
   padding-right: 0;
   position: absolute;
   top: 0;
-  bottom: 0;
+  min-height: 100%;
   margin-top: $header-height;
   background-color: $nav-panel-bg-color;
   border-right: 1px solid grey;
+  width: $nav-panel-width;
   
   .panel {
     border-radius: 0;
     border-right: none;
     border-collapse: collapse;
     
+    ul {
+      margin-bottom: 0;
+      
+      li {
+        font-size: 16px;
+        line-height: 30px;
+      }
+    }
+    
     & + .panel {
       margin-top: 0;
     }
   }
   
-  .user-panel {
+  .user-section {
     height: $sub-header-height;
     background-color: $nav-panel-bg-color;
+    
+    border-bottom: 1px solid grey;
   }
 }
 
 #main-panel {
-  margin-left: 330px;
+  margin-left: $nav-panel-width;
+  padding: 0;
+  
+  .breadcrumb-section {
+    height: $sub-header-height;
+    background-color: $nav-panel-bg-color;
+    
+    border-bottom: 1px solid grey;
+  }
+  
+  .main-section {
+    padding: 0 20px;
+  }
+  
 }

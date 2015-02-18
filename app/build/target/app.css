@@ -4902,19 +4902,33 @@ button.close {
   padding-right: 0;
   position: absolute;
   top: 0;
-  bottom: 0;
+  min-height: 100%;
   margin-top: 56px;
   background-color: #F5F5F5;
-  border-right: 1px solid grey; }
+  border-right: 1px solid grey;
+  width: 300px; }
   #nav-panel .panel {
     border-radius: 0;
     border-right: none;
     border-collapse: collapse; }
+    #nav-panel .panel ul {
+      margin-bottom: 0; }
+      #nav-panel .panel ul li {
+        font-size: 16px;
+        line-height: 30px; }
     #nav-panel .panel + .panel {
       margin-top: 0; }
-  #nav-panel .user-panel {
+  #nav-panel .user-section {
     height: 44px;
-    background-color: #F5F5F5; }
+    background-color: #F5F5F5;
+    border-bottom: 1px solid grey; }
 
 #main-panel {
-  margin-left: 330px; }
+  margin-left: 300px;
+  padding: 0; }
+  #main-panel .breadcrumb-section {
+    height: 44px;
+    background-color: #F5F5F5;
+    border-bottom: 1px solid grey; }
+  #main-panel .main-section {
+    padding: 0 20px; }

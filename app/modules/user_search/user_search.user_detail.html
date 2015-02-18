@@ -1,0 +1,162 @@
+<div>
+    <div class="row">
+        <h1 class="page-title txt-color-blueDark">
+            <i class="fa-fw fa fa-home"></i>
+            <a href="#users/search_accounts">Search Accounts</a>
+            <span>> <a href="#users/account_detail?id={{user.accountId}}">{{user.accountEmail}}</a></span>
+            <span>> {{user.name}}</span>
+        </h1>
+    </div>
+    <div class="row">
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+                <header role="heading">
+                    <h2>User Information</h2>
+                </header>
+                <div class="alert alert-{{error.type}} fade in" ng-show="error.type != null">
+                    <button class="close" data-dismiss="alert">
+                        ×
+                    </button>
+                    <i class="fa-fw fa fa-{{error.type}}"></i>
+                    {{error.msg}}
+                </div>
+
+                <div role="content">
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="dd">
+                                <ol class="dd-list">
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            ID <span>- {{user.id}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Name <span>- {{user.name}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Internal Id <span>- {{user.internalId == null ? 'N/A' : user.internalId}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Affiliate Links <span>- {{user.optimize ? 'Yes' : 'No'}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Link URLs <span>- {{user.linkUrls ? 'Yes' : 'No'}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            API Key <span>- {{user.apiKey}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Type <span>- {{user.userType}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Signed up <span>- {{user.registerDate | date}}</span>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="dd">
+                                <ol class="dd-list">
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Approval Status <span>- {{user.approvalStatus}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Failover <span>- {{user.failover}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Conservative vs House / potentially broken links user <span>- {{user.careful}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Spam filter circumvention <span>- {{user.spamOverride}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Industry Type <span>- {{user.industryType}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Website Type <span>- {{user.websiteType}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Merchant Sensitive Types
+                                            <ul ng-if="user.merchantSensitiveTypes != null && user.merchantSensitiveTypes.length > 0">
+                                                <li ng-repeat="merchantSensitiveType in user.merchantSensitiveTypes">{{merchantSensitiveType.name}}</li>
+                                            </ul>
+                                            <span ng-if="user.merchantSensitiveTypes == null || user.merchantSensitiveTypes.length   == 0">- N/A</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                         <div class="dd-handle">
+                                             Affiliation Throttle <span>- {{user.affiliationThrottle}}</span>
+                                         </div>
+                                     </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <div class="row" ng-if="user.userType == 'Installable'">
+        <article class="col-sm-12">
+            <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+                <header role="heading">
+                    <h2>Plugins</h2>
+                </header>
+                <div role="content">
+                    <table class="table table-bordered table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Plugin User Name</th>
+                            <th>Status</th>
+                            <th>Register Date</th>
+                        </tr>
+                        </thead>
+                        <tbody >
+                            <tr ng-repeat="plugin in plugins">
+                                <td>
+                                    <a href="#users/plugin_detail?id={{plugin.id}}">{{plugin.type}}</a>
+                                </td>
+                                <td>
+                                    <a ng-if="plugin.plugin_user_id != 'N/A'" href="#users/user_detail?id={{plugin.plugin_user_id}}">{{plugin.plugin_user_name}}</a>
+                                    <a ng-if="plugin.plugin_user_id == 'N/A'">{{plugin.plugin_user_name}}</a>
+                                </td>
+                                <td>{{plugin.status}}</td>
+                                <td>{{plugin.created_date | date}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>

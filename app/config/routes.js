@@ -65,4 +65,10 @@ angular.module('adminApp')
       controller: "SidDecoderCtrl"
     })
     
+    .state('nav.userSearch', {
+      url: "/user-search",
+      templateUrl: "modules/user_search/user_search.html",
+      controller: "UserSearchCtrl"
+    })
+    
 }])

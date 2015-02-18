@@ -1,0 +1,209 @@
+<div>
+    <div class="row">
+        <h1 class="page-title txt-color-blueDark">
+            <i class="fa-fw fa fa-home"></i>
+            <a href="#users/search_accounts">Search Accounts</a>
+            <span>> {{account.email}}</span>
+        </h1>
+    </div>
+    <div class="row">
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+                <header role="heading">
+                    <h2>Account Information</h2>
+                </header>
+                <div class="alert alert-{{error.type}} fade in" ng-show="error.type != null">
+                    <button class="close" data-dismiss="alert">
+                        ×
+                    </button>
+                    <i class="fa-fw fa fa-{{error.type}}"></i>
+                    {{error.msg}}
+                </div>
+
+                <div role="content">
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="dd">
+                                <ol class="dd-list">
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            ID <span>- {{account.id}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            First Name <span>- {{account.firstName}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Last Name <span>- {{account.lastName}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Email <span>- {{account.email}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Paypal Email <span>- {{account.paypalEmail}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Best Contact Email <span>- {{account.contactEmail}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Email Verified <span>- {{account.emailVerified}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Status <span>- {{account.status}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Trusted
+                                        <span>
+                                            <form>
+                                                <input type="checkbox" name="trusted" ng-model="account.trusted" ng-change="updateAccountTrusted(account.trusted)">
+                                            </form>
+                                        </span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            New Dashboard
+                                        <span>
+                                            <form>
+                                                <input type="checkbox" name="newDashboard" ng-model="account.newDashboard" ng-change="updateAccountNewDashboard(account.newDashboard)">
+                                            </form>
+                                        </span>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="dd">
+                                <ol class="dd-list">
+                                    <!--<li class="dd-item">-->
+                                        <!--<div class="dd-handle">-->
+                                            <!--Referrer Account ID / Email <span>- {{account.id}}</span>-->
+                                        <!--</div>-->
+                                    <!--</li>-->
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Street Address <span>- {{account.streetAddress}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            City <span>- {{account.city}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Zip <span>- {{account.zipCode}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Phone <span>- {{account.phone}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Admin <span>- {{account.admin}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Signed up <span>- {{account.createDate | date}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Last logged in <span>- {{account.lastLoginDate | date}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Unlimited Users? <span>- {{account.unlimitedUsers}}</span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Payment Type
+                                        <span>
+                                            <form>
+                                                <label class="select">
+                                                    <select ng-options="paymentType.code as paymentType.display for paymentType in paymentTypes" ng-model="account.paymentType" required="" ng-change="updateAccountPaymentType(account.paymentType)">
+                                                    </select>
+                                                </label>
+                                            </form>
+                                        </span>
+                                        </div>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            Partner Testing?
+                                        <span>
+                                            <form>
+                                                <input type="checkbox" ng-model="account.partnerTesting" ng-change="updateAccountPartnerTesting(account.partnerTesting)">
+                                            </form>
+                                        </span>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <div class="row">
+        <article class="col-sm-12">
+            <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+                <header role="heading">
+                    <h2>Installable User Details</h2>
+                </header>
+                <div role="content">
+                    <table class="table table-bordered table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Api Key</th>
+                            <th>Date Created</th>
+                            <th>Current Rev Share</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="user in users">
+                            <td>{{user.id}}</td>
+                            <td><a href="#users/user_detail?id={{user.id}}">{{user.name}}</a></td>
+                            <td>{{user.apiKey}}</td>
+                            <td>{{user.createDate | date}}</td>
+                            <td>{{revShares[user.id] ? revShares[user.id] : 'Loading...'}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="dt-toolbar-footer">
+                    <div class="col-xs-12 col-sm-12 col-lg-12">
+                        <div id="dt_basic_paginate" class="dataTables_paginate paging_simple_numbers">
+                            <pagination items-per-page="perPage" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" ng-change="pageChanged()"></pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>

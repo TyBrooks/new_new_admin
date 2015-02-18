@@ -1,0 +1,55 @@
+<div>
+    <div class="row">
+        <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> Search Accounts</h1>
+    </div>
+
+    <div class="row">
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="well">
+                <form ng-submit="searchAccounts(search_input)">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Search (id, email, nick, api-key)" ng-model="search_input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default btn-primary" type="submit">
+                                <i class="fa fa-search"></i> Search
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </article>
+    </div>
+    <div class="row">
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <table class="table table-bordered table-condensed">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Email</th>
+                    <th>Email verified?</th>
+                    <th>Status</th>
+                    <th>Nick</th>
+                    <th>Temp Password?</th>
+                    <th>Admin?</th>
+                    <th>New dashboard</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="account in accountResults" ng-if="accountResults != null && accountResults.length > 0">
+                    <td>{{account.id}}</td>
+                    <td><a href="#users/account_detail?id={{account.id}}">{{account.email}}</a></td>
+                    <td>{{account.emailVerified}}</td>
+                    <td>{{account.status}}</td>
+                    <td>{{account.nick}}</td>
+                    <td>{{account.tempPassword}}</td>
+                    <td>{{account.admin}}</td>
+                    <td>{{account.newDashboard}}</td>
+                </tr>
+                <tr ng-if="accountResults != null && accountResults.length == 0">
+                    <td cell="8"> No Result</td>
+                </tr>
+                </tbody>
+            </table>
+        </article>
+    </div>
+</div>

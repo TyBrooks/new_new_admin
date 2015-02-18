@@ -1,0 +1,100 @@
+<div>
+    <div class="row">
+        <h1 class="page-title txt-color-blueDark">
+            <i class="fa-fw fa fa-home"></i>
+            <a href="#users/search_accounts">Search Accounts</a>
+            <span>> <a href="#users/account_detail?id={{plugin.account_id}}">{{plugin.user_email}}</a></span>
+            <span>> <a href="#users/user_detail?id={{plugin.user_id}}">{{plugin.user_name}}</a></span>
+            <span>> {{plugin.type}}</span>
+        </h1>
+    </div>
+    <div class="row">
+        <header role="heading">
+            <h2>Plugin Information</h2>
+        </header>
+        <div class="alert alert-{{error.type}} fade in" ng-show="error.type != null">
+            <button class="close" data-dismiss="alert">
+                ×
+            </button>
+            <i class="fa-fw fa fa-{{error.type}}"></i>
+            {{error.msg}}
+        </div>
+    </div>
+    <div class="row" ng-if="plugin != null">
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+                <header role="heading">
+                    <h2>Plugin General</h2>
+                </header>
+                <div role="content">
+                    <div class="row">
+                        <dl class="dl-horizontal">
+                            <dt>Plugin Type</dt>
+                            <dd>{{plugin.type}}</dd>
+                            <dt>User ID</dt>
+                            <dd>{{plugin.user_id}}</dd>
+                            <dt>User Email</dt>
+                            <dd>{{plugin.user_email}}</dd>
+                            <dt>Status</dt>
+                            <dd>{{plugin.status}}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <div class="row" ng-if="plugin != null">
+        <article class="col-sm-12">
+            <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+                <header role="heading">
+                    <h2>Params</h2>
+                </header>
+                <div role="content">
+                    <table class="table table-bordered table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Value</th>
+                            <th>Help</th>
+                        </tr>
+                        </thead>
+                        <tbody >
+                        <tr data-ng-repeat="param in plugin.params">
+                            <td>{{param.name}}</td>
+                            <td width="40%">
+                                <input ng-if="param.form_control == 'text'" ng-model="param.value" size="60" type="text"/>
+                                <input ng-if="param.form_control == 'checkbox'" ng-model="param.value" type="checkbox"/>
+                                <div ng-if="param.form_control == 'date'">
+                                    <input ng-model="param.value" type="datetime" readonly>
+                                </div>
+
+                                <ui-select ng-if="param.form_control == 'multi-text'" tagging-label="false" multiple tagging ng-model="param.value" ng-disabled="disabled" style="width: 300px;">
+                                    <ui-select-match placeholder="Select {{param.name}}...">{{$item}}</ui-select-match>
+                                    <ui-select-choices repeat="item in param.value">
+                                        {{item}}
+                                    </ui-select-choices>
+                                </ui-select>
+                                <ui-select ng-if="param.form_control == 'multi-select'" multiple ng-model="param.value" theme="bootstrap" ng-disabled="disabled" close-on-select="false" style="width: 300px;">
+                                    <ui-select-match placeholder="Select {{param.name}}...">{{$item.name}}</ui-select-match>
+                                    <ui-select-choices repeat="item.code as item in param.possibleValues | propsFilter: {name: $select.search, code: $select.search}">
+                                        <div ng-bind-html="item.name | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <ui-select ng-if="param.form_control == 'select'" ng-model="param.value" theme="selectize" ng-disabled="disabled" style="width: 300px;">
+                                    <ui-select-match placeholder="Select {{param.name}}...">{{$select.selected.name}}</ui-select-match>
+                                    <ui-select-choices repeat="pValue.code as pValue in param.possibleValues">
+                                        <span ng-bind-html="pValue.name"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </td>
+                            <td>{{param.description}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a class="btn btn-danger" ng-click="updateParams()">Save Changes</a>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>

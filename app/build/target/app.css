@@ -4888,25 +4888,33 @@ button.close {
     display: none !important; } }
 
 /* app css stylesheet */
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em; }
+#admin-header {
+  padding: 10px;
+  background-image: linear-gradient(to bottom, #f3f3f3, #e2e2e2);
+  background-color: #f3f3f3;
+  border-bottom: 1px solid grey;
+  height: 56px; }
+  #admin-header #logo img {
+    width: 140px; }
 
-.menu:before {
-  content: "["; }
+#nav-panel {
+  padding-left: 0;
+  padding-right: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin-top: 56px;
+  background-color: #F5F5F5;
+  border-right: 1px solid grey; }
+  #nav-panel .panel {
+    border-radius: 0;
+    border-right: none;
+    border-collapse: collapse; }
+    #nav-panel .panel + .panel {
+      margin-top: 0; }
+  #nav-panel .user-panel {
+    height: 44px;
+    background-color: #F5F5F5; }
 
-.menu:after {
-  content: "]"; }
-
-.menu > li {
-  display: inline; }
-
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em; }
-
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0; }
+#main-panel {
+  margin-left: 330px; }

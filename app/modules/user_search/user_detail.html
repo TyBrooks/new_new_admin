@@ -147,7 +147,7 @@
                                     <a ui-sref="nav.pluginDetail({id: plugin.id})">{{plugin.type}}</a>
                                 </td>
                                 <td>
-                                    <a ng-if="plugin.plugin_user_id != 'N/A'" ui-sref='nav.userDetail({plugin.plugin_user_id})'>{{plugin.plugin_user_name}}</a>
+                                    <a ng-if="plugin.plugin_user_id != 'N/A'" ui-sref='nav.userDetail({id: plugin.plugin_user_id})'>{{plugin.plugin_user_name}}</a>
                                     <a ng-if="plugin.plugin_user_id == 'N/A'">{{plugin.plugin_user_name}}</a>
                                 </td>
                                 <td>{{plugin.status}}</td>

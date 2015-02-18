@@ -67,25 +67,25 @@ angular.module('adminApp')
     
     .state('nav.userSearch', {
       url: "/user-search",
-      templateUrl: "modules/user_search/user_search.html",
+      templateUrl: "modules/user_search/account_search.html",
       controller: "UserSearchCtrl"
     })
     
     .state('nav.accountDetail', {
       url: "/accounts/:id",
-      templateUrl: "modules/user_search/user_search.account_detail.html",
+      templateUrl: "modules/user_search/account_detail.html",
       controller: "AccountDetailCtrl"
     })
     
     .state('nav.userDetail', {
       url: "/users/:id",
-      templateUrl: "modules/user_search/user_search.user_detail.html",
+      templateUrl: "modules/user_search/user_detail.html",
       controller: "UserDetailCtrl"
     })
     
     .state('nav.pluginDetail', {
       url: "/plugins/:id",
-      templateUrl: "modules/user_search/user_search.plugin_detail.html",
+      templateUrl: "modules/user_search/plugin_detail.html",
       controller: "PluginDetailCtrl"
     })
     

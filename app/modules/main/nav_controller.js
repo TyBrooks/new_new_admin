@@ -2,10 +2,19 @@
 
 angular.module('adminApp.nav', [])
 
-.controller('NavCtrl', ['$state', 'auth', function($state, auth) {
+.controller('NavCtrl', ['$scope', 'auth', function($scope, auth) {
+  $scope.user = { name: "" };
+
+  $scope.handleAuthFailure = function() {
+    console.log("auth Failed");
+  }
 
   var init = function(){
-    // console.log($state);
+    if ( auth.success ) {
+      $scope.user = auth.data;
+    } else {
+      $scope.handleAuthFailure();
+    }
   };
   
   init();

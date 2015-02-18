@@ -4923,7 +4923,10 @@ button.close {
   #nav-panel .user-section {
     height: 44px;
     background-color: #F5F5F5;
-    border-bottom: 1px solid grey; }
+    border-bottom: 1px solid grey;
+    font-size: 20px;
+    text-indent: 20px;
+    line-height: 44px; }
 
 #main-panel {
   margin-left: 300px;

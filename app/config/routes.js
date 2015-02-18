@@ -20,8 +20,8 @@ angular.module('adminApp')
         auth: function(authService) {
           return authService.sendAuthRequest()
             .then(
-              function(data) {
-                return { data: data, success: true};
+              function(response) {
+                return { data: response.data, success: true};
               },
               function() {
                 return { success: false };

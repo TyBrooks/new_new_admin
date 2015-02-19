@@ -43,15 +43,6 @@ angular.module('adminApp')
         label: "Home",
       }
     })
-  
-    .state('nav.feature1', {
-      url: "/feature1",
-      templateUrl: 'modules/feature1/feature1.html',
-      controller: 'Feature1Ctrl',
-      breadcrumb: {
-        label: "Custom Insert"
-      }
-    })
     
     .state('nav.elasticSearch', {
       url: "/es",
@@ -76,7 +67,7 @@ angular.module('adminApp')
       templateUrl: "modules/sid_decoder/sid_decoder.html",
       controller: "SidDecoderCtrl",
       breadcrumb: {
-        label: "Custom Insert"
+        label: "SID Decoder"
       }
     })
     

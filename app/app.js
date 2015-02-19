@@ -10,5 +10,5 @@ window.adminApp = angular.module('adminApp', [
   'adminApp.elasticSearch',
   'adminApp.customInsert',
   'adminApp.sidDecoder',
-  'adminApp.userSearch'
+  'adminApp.accountSearch'
 ]);

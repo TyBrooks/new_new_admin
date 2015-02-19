@@ -71,7 +71,7 @@ angular.module('adminApp')
       }
     })
     
-    .state('nav.userSearch', {
+    .state('nav.accountSearch', {
       url: "/account-search",
       templateUrl: "modules/user_search/account_search.html",
       controller: "AccountSearchCtrl",
@@ -86,7 +86,7 @@ angular.module('adminApp')
       controller: "AccountDetailCtrl",
       breadcrumb: {
         label: "Account Details",
-        parent: "nav.userSearch"
+        parent: "nav.accountSearch"
       }
     })
     

@@ -1,4 +1,4 @@
-angular.module('adminApp.userSearch')
+angular.module('adminApp.accountSearch')
 
 .controller('AccountDetailCtrl',
   ['$scope', '$http', '$stateParams', 'settings',

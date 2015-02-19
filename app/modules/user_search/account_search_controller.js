@@ -1,4 +1,4 @@
-angular.module('adminApp.userSearch', [])
+angular.module('adminApp.accountSearch', [])
 
 .controller('AccountSearchCtrl', ['$scope', '$http', 'settings', function($scope, $http, settings) {
 	    //TODO update when account has gender or profile image url

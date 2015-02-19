@@ -4933,7 +4933,10 @@ button.close {
   padding: 0; }
   #main-panel .breadcrumb-section {
     height: 44px;
+    line-height: 44px;
     background-color: #F5F5F5;
+    font-size: 18px;
+    padding-left: 20px;
     border-bottom: 1px solid grey;
     border-right: 1px solid grey; }
   #main-panel .main-section {

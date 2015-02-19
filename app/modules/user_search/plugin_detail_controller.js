@@ -26,4 +26,6 @@ angular.module('adminApp.userSearch')
             });
     }
     $scope.getPlugin($stateParams.id);
+    
+    $scope.test = "1";
 }]);

@@ -75,7 +75,11 @@ $nav-panel-bg-color: #F5F5F5;
   
   .breadcrumb-section {
     height: $sub-header-height;
+    line-height: $sub-header-height;
     background-color: $nav-panel-bg-color;
+    
+    font-size: 18px;
+    padding-left: 20px;
     
     border-bottom: 1px solid grey;
     border-right: 1px solid grey;

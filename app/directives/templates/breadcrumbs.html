@@ -1,6 +1,8 @@
-<ul>
-	<a ng-repeat='state in stateList' ui-sref='{{state.sref}}'>
-		<li>{{state.label}}</li>
+<span ng-repeat='state in stateList'>
+	<a ui-sref='{{state.sref}}' ng-show='!$last'>
+		<span>{{state.label}}</span>
 	</a>
-</ul>
+	<span ng-show='$last'>{{state.label}}</span>
+	<span ng-show='!$last'>></span>
+</span>
 		

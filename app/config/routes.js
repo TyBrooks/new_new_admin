@@ -38,55 +38,85 @@ angular.module('adminApp')
     .state('nav.welcome', {
       url: "/welcome",
       templateUrl: "modules/main/nav.welcome.html",
-      controller: "NavCtrl"
+      controller: "NavCtrl",
+      breadcrumb: {
+        label: "Home",
+      }
     })
   
     .state('nav.feature1', {
       url: "/feature1",
       templateUrl: 'modules/feature1/feature1.html',
-      controller: 'Feature1Ctrl'
+      controller: 'Feature1Ctrl',
+      breadcrumb: {
+        label: "Custom Insert"
+      }
     })
     
     .state('nav.elasticSearch', {
       url: "/es",
       templateUrl: 'modules/elastic_search/elastic_search.html',
-      controller: 'ElasticSearchCtrl'
+      controller: 'ElasticSearchCtrl',
+      breadcrumb: {
+        label: "Elastic Search"
+      }
     })
     
     .state('nav.customInsert', {
       url: "/custom-insert",
       templateUrl: 'modules/custom_insert/custom_insert.html',
-      controller: 'CustomInsertCtrl'
+      controller: 'CustomInsertCtrl',
+      breadcrumb: {
+        label: "Custom Insert"
+      }
     })
     
     .state('nav.sidDecoder', {
       url: "/sid-decoder",
       templateUrl: "modules/sid_decoder/sid_decoder.html",
-      controller: "SidDecoderCtrl"
+      controller: "SidDecoderCtrl",
+      breadcrumb: {
+        label: "Custom Insert"
+      }
     })
     
     .state('nav.userSearch', {
       url: "/account-search",
       templateUrl: "modules/user_search/account_search.html",
-      controller: "AccountSearchCtrl"
+      controller: "AccountSearchCtrl",
+      breadcrumb: {
+        label: "Account Search"
+      }
     })
     
     .state('nav.accountDetail', {
       url: "/accounts/:id",
       templateUrl: "modules/user_search/account_detail.html",
-      controller: "AccountDetailCtrl"
+      controller: "AccountDetailCtrl",
+      breadcrumb: {
+        label: "Account Details",
+        parent: "nav.userSearch"
+      }
     })
     
     .state('nav.userDetail', {
       url: "/users/:id",
       templateUrl: "modules/user_search/user_detail.html",
-      controller: "UserDetailCtrl"
+      controller: "UserDetailCtrl",
+      breadcrumb: {
+        label: "User Details",
+        parent: "nav.accountDetail"
+      }
     })
     
     .state('nav.pluginDetail', {
       url: "/plugins/:id",
       templateUrl: "modules/user_search/plugin_detail.html",
-      controller: "PluginDetailCtrl"
+      controller: "PluginDetailCtrl",
+      breadcrumb: {
+        label: "Plugin Detail",
+        parent: "nav.userDetail"
+      }
     })
     
 }])

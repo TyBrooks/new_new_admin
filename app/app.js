@@ -4,6 +4,8 @@
 window.adminApp = angular.module('adminApp', [
   'ui.router',
   'ui.bootstrap',
+  'ui.select',
+  'ngSanitize',
   'adminApp.nav',
   'adminApp.filters',
   'adminApp.directives',

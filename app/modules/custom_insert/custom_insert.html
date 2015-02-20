@@ -1,10 +1,19 @@
 <uploadStatus></uploadStatus>
 <h3> Custom Insert List Management </h3>
 
-<section id='ci-list-uploader'>
+<section id='ci-list-uploader' uploader='uploader'>
 	<h3> List Uploader </h3>
 	
-	
+	<form name='upload'>
+		<progressbar ng-class="{'progress-striped active': uploader.progress !== 100}" max="100" value="uploader.progress"></progressbar>
+		<input type="file" nv-file-select uploader='uploader' ng-disabled='uploader.queue.length !== 0'/><br/>
+		<button ng-click='uploader.queue[0].upload()'> upload </button>
+		<br>
+		<input type='radio' ng-model="params.type" value="ae"> Add to Existing </input>
+		<input type='radio' ng-model="params.type" value="re"> Remove from Existing </input>
+		<input type='radio' ng-model="params.type" value="os"> Overwrite Selected Keywords </input>
+		<input type='radio' ng-model="params.type" value="ow"> Overwrite Whole List </input>
+	</form>
 </section>
 
 <section id='ci-list-downloader'>

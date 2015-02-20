@@ -6,6 +6,7 @@ window.adminApp = angular.module('adminApp', [
   'ui.bootstrap',
   'ui.select',
   'ngSanitize',
+  'angularFileUpload',
   'adminApp.nav',
   'adminApp.filters',
   'adminApp.directives',

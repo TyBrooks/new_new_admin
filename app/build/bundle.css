@@ -4887,6 +4887,9 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+.user-id-select {
+  width: 300px; }
+
 /* app css stylesheet */
 #admin-header {
   padding: 10px;
@@ -4895,6 +4898,8 @@ button.close {
   border-right: 1px solid grey;
   border-bottom: 1px solid grey;
   height: 56px; }
+  #admin-header #logo {
+    margin-top: 0 !important; }
   #admin-header #logo img {
     width: 140px; }
 

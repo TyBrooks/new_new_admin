@@ -7,7 +7,7 @@
 	<form name='upload'>
 		<progressbar ng-class="{'progress-striped active': uploader.progress !== 100}" max="100" value="uploader.progress"></progressbar>
 		<input type="file" nv-file-select uploader='uploader' ng-disabled='uploader.queue.length !== 0'/><br/>
-		<button ng-click='uploader.queue[0].upload()'> upload </button>
+		<button class='btn btn-default' ng-click='uploader.queue[0].upload()'> upload </button>
 		<br>
 		<input type='radio' ng-model="params.type" value="ae"> Add to Existing </input>
 		<input type='radio' ng-model="params.type" value="re"> Remove from Existing </input>
@@ -18,4 +18,17 @@
 
 <section id='ci-list-downloader'>
 	<h3> List Downloader </h3>
+	<form name='download'>
+		<ui-select class='user-id-select' multiple tagging='taggedId' tagging-tokens=",|SPACE|ENTER|," theme='bootstrap' ng-model='download.ids'>
+			<ui-select-match placeholder='Select User Ids'>
+				{{$item}}
+			</ui-select-match>
+			<ui-select-choices repeat='user in []'>
+				{{user}}
+			</ui-select-choices>
+		</ui-select>
+		
+		<button class='btn btn-default'>Submit</button>
+	</form>
 </section>
+

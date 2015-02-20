@@ -6,4 +6,12 @@ angular.module('adminApp.customInsert', [])
   $scope.params = {
     type: "ae"
   };
+  
+  $scope.download = {
+    ids: []
+  };
+  
+  $scope.taggedId = function(id) {
+    return id;
+  }
 } ] );

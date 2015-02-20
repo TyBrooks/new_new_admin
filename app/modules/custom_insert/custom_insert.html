@@ -2,33 +2,71 @@
 <h3> Custom Insert List Management </h3>
 
 <section id='ci-list-uploader' uploader='uploader'>
-	<h3> List Uploader </h3>
-	
-	<form name='upload'>
-		<progressbar ng-class="{'progress-striped active': uploader.progress !== 100}" max="100" value="uploader.progress"></progressbar>
-		<input type="file" nv-file-select uploader='uploader' ng-disabled='uploader.queue.length !== 0'/><br/>
-		<button class='btn btn-default' ng-click='uploader.queue[0].upload()'> upload </button>
-		<br>
-		<input type='radio' ng-model="params.type" value="ae"> Add to Existing </input>
-		<input type='radio' ng-model="params.type" value="re"> Remove from Existing </input>
-		<input type='radio' ng-model="params.type" value="os"> Overwrite Selected Keywords </input>
-		<input type='radio' ng-model="params.type" value="ow"> Overwrite Whole List </input>
-	</form>
+  <h3> List Uploader </h3>
+  
+  <div id='upload-message' ng-show='message' ng-class="{ 'message-alert' : messageType === 'alert'}">
+    {{message}}
+  </div>
+  
+  <form name='upload'>
+    <div id='upload-input'>
+      <input type="file" nv-file-select uploader='uploader'>
+      <div>Or</div>
+      <div class='file-drop' over-class='file-hover' nv-file-drop uploader="uploader">Drop Files Here</div>
+    </div>
+    
+    <div id='file-info'>
+      <div id='file-info'>
+        <table class="table">
+          <thead>
+              <tr>
+                  <th width="50%">Name</th>
+                  <th ng-show="uploader.isHTML5">Size</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="item in uploader.queue">
+                  <td><strong>{{ item.file.name }}</strong></td>
+                  <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div id='file-controls'>
+        <input type='radio' ng-model="params.type" value="ae"> Add to Existing
+        <input type='radio' ng-model="params.type" value="re"> Remove from Existing
+        <input type='radio' ng-model="params.type" value="os"> Overwrite Selected Keywords
+        <input type='radio' ng-model="params.type" value="ow"> Overwrite Whole List
+        
+        <div id='progress'>
+          <div> Upload Progress: </div>
+          <progressbar ng-class="{'progress-striped active': uploader.progress !== 100}" max="100" value="uploader.progress"></progressbar>
+        </div>
+        
+        <div id='buttons'>
+          <button class='btn btn-default' ng-click='uploader.queue[0].upload()'> upload </button>
+          <button class='btn btn-danger' ng-click='clearFile()'> clear </button>
+        </div>
+      </div>
+    </div>
+  </form>
 </section>
 
 <section id='ci-list-downloader'>
-	<h3> List Downloader </h3>
-	<form name='download'>
-		<ui-select class='user-id-select' multiple tagging='taggedId' tagging-tokens=",|SPACE|ENTER|," theme='bootstrap' ng-model='download.ids'>
-			<ui-select-match placeholder='Select User Ids'>
-				{{$item}}
-			</ui-select-match>
-			<ui-select-choices repeat='user in []'>
-				{{user}}
-			</ui-select-choices>
-		</ui-select>
-		
-		<button class='btn btn-default'>Submit</button>
-	</form>
+  <h3> List Downloader </h3>
+  <form name='download'>
+    <ui-select class='user-id-select' multiple tagging='taggedId' tagging-tokens=",|SPACE|ENTER|," theme='bootstrap' ng-model='download.ids'>
+      <ui-select-match placeholder='Select User Ids'>
+        {{$item}}
+      </ui-select-match>
+      <ui-select-choices repeat='user in []'>
+        {{user}}
+      </ui-select-choices>
+    </ui-select>
+    
+    <button class='btn btn-default'>Submit</button>
+    <button class='btn btn-danger' ng-click='clearIds()'>Clear</button>
+  </form>
 </section>
 

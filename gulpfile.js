@@ -15,6 +15,7 @@ var paths = {
   style: {
     target:     bases.build + "/target",
     sassFiles:  "app/stylesheets/*.scss",
+    sassModules: "app/stylesheets/modules/**/*.scss",
     build:      bases.build
   }
 }
@@ -24,7 +25,7 @@ gulp.task('default', function() {
 })
 
 gulp.task('watch', function() {
-  gulp.watch(paths.style.sassFiles, ['sass']);
+  gulp.watch([paths.style.sassFiles, paths.style.sassModules], ['sass']);
 })
 
 gulp.task('sass', function() {

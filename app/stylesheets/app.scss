@@ -21,7 +21,10 @@ $nav-panel-bg-color: #F5F5F5;
   border-right: 1px solid grey;
   border-bottom: 1px solid grey;
   height: $header-height;
-
+  
+  #logo {
+    margin-top: 0 !important;
+  }
   
   #logo img {
     width: 140px;

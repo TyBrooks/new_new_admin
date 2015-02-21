@@ -4,11 +4,9 @@
 
 
 #ci-list-uploader, #ci-list-downloader {
-  margin-bottom: 40px;
   
   h3 {
     text-align: center;
-    margin-bottom: 40px;
     padding-bottom: 10px;
     border-bottom: 4px solid grey;
     margin-left: 80px;
@@ -17,7 +15,17 @@
 }
 
 #ci-list-uploader {
+  margin-top: 40px;
   
+  .upload-form {
+    margin-top: 40px !important;
+  }
+  
+  #upload-input, #file-info {
+    display: inline-block;
+  }
+  
+  // The input section is the file drop and file selector
   #upload-input {
     vertical-align: top;
     text-align: center;
@@ -29,7 +37,9 @@
     .file-input-wrapper {
       display: inline-block;
       text-align: center;
-      width: 163px;
+      width: 80px;
+      overflow: hidden;
+      padding-left: 2px;
     }
     
     .file-input-text {
@@ -44,9 +54,14 @@
       font-size: 18px;
       text-align: center;
       background-color: white;
+      
+      &.file-hover {
+        border: 3px dashed green !important;
+      }
     }
   }
   
+  //File info is the table that displays the name/size of the file
   #file-info {
     min-height: 70px;
     
@@ -67,6 +82,7 @@
     }
   }
   
+  // Styling for all the radio buttons and action buttons goes here
   #file-controls {
     .file-control-radio {
       font-size: 16px;
@@ -89,18 +105,7 @@
   
 }
 
-.file-hover {
-  border: 3px dashed green !important;
-}
-
-#upload-input, #file-info {
-  display: inline-block;
-}
-
-#upload-input {
-  margin-right: 10px;
-}
-
+// Styling for the upload info messages
 #upload-message {
   height: 60px;
   line-height: 60px;
@@ -118,15 +123,10 @@
   
   &.message-alert {
     border: 3px dashed red;
-    color: red;
+    color: #DA0000;
     text-align: center;
+    background-color: #FFCFCF;
   }
 }
 
-//.ng-hide-add.ng-hide-add-active,
-//.ng-hide-add,
-//.ng-hide-remove,
-//.ng-hide-remove.ng-hide-remove-active {
-//  transition: all 0.5s !important;
-//  background-color: green;
-//}
+

@@ -135,3 +135,43 @@
 }
 
 
+
+// STyling for the download section
+
+#ci-list-downloader {
+  margin-bottom: 40px;
+  
+  .download-form {
+    margin-top: 40px;
+  }
+  
+  .download-ids-input {
+    display: inline-block;
+    
+    .user-id-select {
+      width: 300px !important;
+      height: 150px !important;
+      font-size: 16px !important;
+    
+      * {
+        font-size: 16px !important;
+      }
+    }
+  
+    #download-buttons {
+      margin-top: 20px;
+    }
+  }
+  
+  .download-instructions {
+    display: inline-block;
+    
+    margin-left: 20px;
+    vertical-align: top;
+    
+    font-size: 18px;
+    font-style: italic;
+  }
+}
+
+

@@ -4957,7 +4957,8 @@ button.close {
   font-weight: bold;
   border: 1px solid grey;
   border-radius: 4px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  text-align: center; }
   #upload-message.ng-hide {
     height: 0;
     opacity: 0;
@@ -4965,8 +4966,31 @@ button.close {
   #upload-message.message-alert {
     border: 3px dashed red;
     color: #DA0000;
-    text-align: center;
     background-color: #FFCFCF; }
+  #upload-message.message-success {
+    border: 3px solid green;
+    color: green; }
+
+#ci-list-downloader {
+  margin-bottom: 40px; }
+  #ci-list-downloader .download-form {
+    margin-top: 40px; }
+  #ci-list-downloader .download-ids-input {
+    display: inline-block; }
+    #ci-list-downloader .download-ids-input .user-id-select {
+      width: 300px !important;
+      height: 150px !important;
+      font-size: 16px !important; }
+      #ci-list-downloader .download-ids-input .user-id-select * {
+        font-size: 16px !important; }
+    #ci-list-downloader .download-ids-input #download-buttons {
+      margin-top: 20px; }
+  #ci-list-downloader .download-instructions {
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: top;
+    font-size: 18px;
+    font-style: italic; }
 
 /* app css stylesheet */
 #admin-header {

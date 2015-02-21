@@ -10,17 +10,19 @@
   
   <form name='upload'>
     <div id='upload-input'>
-      <input type="file" nv-file-select uploader='uploader'>
-      <div>Or</div>
+      <div class='file-input-wrapper'>
+        <input type="file" nv-file-select uploader='uploader'>
+      </div>
+      <div class='file-input-text'>Or</div>
       <div class='file-drop' over-class='file-hover' nv-file-drop uploader="uploader">Drop Files Here</div>
     </div>
     
     <div id='file-info'>
       <div id='file-info'>
-        <table class="table">
+        <table id='upload-file-table' class="table">
           <thead>
               <tr>
-                  <th width="50%">Name</th>
+                  <th width="50%">File Name</th>
                   <th ng-show="uploader.isHTML5">Size</th>
               </tr>
           </thead>
@@ -33,16 +35,16 @@
         </table>
       </div>
       
+      <div id='progress'>
+        <div> Upload Progress: </div>
+        <progressbar ng-class="{'progress-striped active': uploader.progress !== 100}" max="100" value="uploader.progress"></progressbar>
+      </div>
+      
       <div id='file-controls'>
-        <input type='radio' ng-model="params.type" value="ae"> Add to Existing
-        <input type='radio' ng-model="params.type" value="re"> Remove from Existing
-        <input type='radio' ng-model="params.type" value="os"> Overwrite Selected Keywords
-        <input type='radio' ng-model="params.type" value="ow"> Overwrite Whole List
-        
-        <div id='progress'>
-          <div> Upload Progress: </div>
-          <progressbar ng-class="{'progress-striped active': uploader.progress !== 100}" max="100" value="uploader.progress"></progressbar>
-        </div>
+        <div class='file-control-radio'><input id='radio-ae' type='radio' ng-model="params.type" value="ae"> <label for='radio-ae'> Remove from Existing </label></div>
+        <div class='file-control-radio'><input id='radio-re' type='radio' ng-model="params.type" value="re"> <label for='radio-re'> Overwrite Selected Keywords </label></div>
+        <div class='file-control-radio'><input id='radio-os' type='radio' ng-model="params.type" value="os"> <label for='radio-os'> Add to Existing </label></div>
+        <div class='file-control-radio'><input id='radio-ow' type='radio' ng-model="params.type" value="ow"> <label for='radio-ow'> Overwrite Whole List </label></div>
         
         <div id='buttons'>
           <button class='btn btn-default' ng-click='uploader.queue[0].upload()'> upload </button>

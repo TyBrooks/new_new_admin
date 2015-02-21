@@ -4,7 +4,7 @@
 <section id='ci-list-uploader' uploader='uploader'>
   <h3> List Uploader </h3>
   
-  <div id='upload-message' ng-show='message' ng-class="{ 'message-alert' : messageType === 'alert'}">
+  <div id='upload-message' ng-show='message' ng-class="{ 'message-alert' : messageType === 'alert', 'message-success' : messageType === 'success'}">
     {{message}}
   </div>
   

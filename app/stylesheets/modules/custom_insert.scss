@@ -114,6 +114,7 @@
   border: 1px solid grey;
   border-radius: 4px;
   margin-bottom: 20px;
+  text-align: center;
 
   &.ng-hide {
     height: 0;
@@ -124,8 +125,12 @@
   &.message-alert {
     border: 3px dashed red;
     color: #DA0000;
-    text-align: center;
     background-color: #FFCFCF;
+  }
+  
+  &.message-success {
+    border: 3px solid green;
+    color: green;
   }
 }
 

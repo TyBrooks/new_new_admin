@@ -11,7 +11,7 @@
   <form name='upload' class='upload-form'>
     <div id='upload-input'>
       <div class='file-input-wrapper'>
-        <input type="file" nv-file-select uploader='uploader'>
+        <input id='file-input' type="file" nv-file-select uploader='uploader' ng-disabled='uploader.queue.length >= uploader.queueLimit'>
       </div>
       <div class='file-input-text'>Or</div>
       <div class='file-drop' over-class='file-hover' nv-file-drop uploader="uploader">Drop Files Here</div>

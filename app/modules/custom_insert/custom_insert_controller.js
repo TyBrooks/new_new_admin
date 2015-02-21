@@ -18,7 +18,8 @@ angular.module('adminApp.customInsert', [])
         return isCSV;
       }
     }],
-    removeAfterUpload: true
+    removeAfterUpload: true,
+    queueLimit: 1
   });
   
   $scope.params = {
@@ -37,6 +38,8 @@ angular.module('adminApp.customInsert', [])
   }
   
   $scope.clearFile = function() {
+    angular.element( document.getElementById('file-input') ).val(null);
+        
     $scope.uploader.clearQueue();
   }
   

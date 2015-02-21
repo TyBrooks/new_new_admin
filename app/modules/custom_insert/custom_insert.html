@@ -59,7 +59,7 @@
   <h3> List Downloader </h3>
   <form name='download' class='download-form'>
     <div class='download-ids-input'>
-      <ui-select class='user-id-select' multiple tagging='taggedId' tagging-tokens=",|SPACE|ENTER|," theme='bootstrap' ng-model='download.ids'>
+      <ui-select class='user-id-select' multiple tagging='filterNonIds' tagging-tokens=",|SPACE|ENTER|," theme='bootstrap' ng-model='download.ids'>
         <ui-select-match placeholder='Select User Ids'>
           {{$item}}
         </ui-select-match>

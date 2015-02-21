@@ -722,6 +722,34 @@
         }
       }
     });
+    
+    // _searchInput.on('paste', function (e) {
+//       var event = (e.originalEvent) ? e.originalEvent : e;
+//       var data = event.clipboardData.getData('text/plain');
+//       if (data && data.length > 0 && ctrl.taggingTokens.isActivated && ctrl.tagging.fct) {
+//         var regexString = "";
+//         ctrl.taggingTokens.tokens.forEach( function( token ) {
+//           if (token === "SPACE" || token === "ENTER") {
+//             token = "\s+"
+//           }
+//           regexString += token + "|";
+//         } );
+//         regexString = regexString.slice(0, -1);
+//         var regexp = new RegExp(regexString, "g");
+//
+//         var items = data.split(regexp); // split by first token only
+//         if (items && items.length > 0) {
+//           angular.forEach(items, function (item) {
+//             var newItem = ctrl.tagging.fct(item);
+//             if (newItem) {
+//               ctrl.select(newItem, true);
+//             }
+//           });
+//           e.preventDefault();
+//           e.stopPropagation();
+//         }
+//       }
+//     });
 
     _searchInput.on('keyup', function(e) {
       if ( ! KEY.isVerticalMovement(e.which) ) {

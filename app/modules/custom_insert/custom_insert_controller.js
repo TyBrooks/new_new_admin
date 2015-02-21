@@ -73,7 +73,9 @@ angular.module('adminApp.customInsert', [])
     ids: []
   };
   
-  $scope.taggedId = function(id) {
-    return id;
+  $scope.filterNonIds = function(id) {
+    var id = id.replace(/\s+/g, "");
+    var isId = !!id.match(/^\d+$/)
+    return ( isId ) ? id : "";
   }
 } ] );

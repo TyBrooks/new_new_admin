@@ -45,7 +45,7 @@ angular.module('adminApp.customInsert', [])
   
   $scope.setCallbacks = function( uploader ) {
     uploader.onWhenAddingFileFailed = function( filter ) {
-      console.log("File adding failed. Failing filter: ", filter)
+      console.log("File adding failed. Failing filter: ", filter);
       $scope.displayMessage("Upload only supports CSV Files!", 4000, "alert");
     }
     
@@ -56,6 +56,8 @@ angular.module('adminApp.customInsert', [])
     uploader.onErrorItem = function( item, response, stat, headers ) {
       console.log("File upload error. Debug info dump: item, response, status, headers", item, response, stat, headers)
       $scope.displayMessage("File upload failed!", 6000, "alert");
+      //This needs to be asynchronous, so the uploader knows the file has failed upload
+      setTimeout( function() { $scope.clearFile() }, 10)
     }
   }
   

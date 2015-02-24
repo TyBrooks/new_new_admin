@@ -1,0 +1,115 @@
+<div>
+	<div class="row">
+		<h1 class="page-title txt-color-blueDark">
+			<i class="fa-fw fa fa-home"></i> Create White List IP
+		</h1>
+	</div>
+
+	<div class="row">
+		<article class="col-xs-12 col-sm-12 col-md-4 col-lg-12">
+			<table class="well">
+				<tr>
+					<td class="well">
+						<div>
+							<form novalidate ng-submit="saveWhiteListedIps()">
+
+								<table>
+									<tr>
+										<td><label> Ip_Address: </label></td>
+										<td><input type="text" ng-model="ip_address"
+											placeholder="ip"></td>
+									</tr>
+									<tr>
+										<td><label>Description:</label></td>
+										<td><input type="text" ng-model="description"
+											placeholder="description"></td>
+									</tr>
+									<tr>
+										<td><label>Deleted:</label></td>
+										<td><input type="checkbox" ng-model="deleted"
+											ng-disabled="edit"></td>
+									</tr>
+									<tr>
+										<td><input type='submit' class="btn btn-primary"
+											value="Create"></td>
+									</tr>
+								</table>
+							</form>
+						</div>
+					</td>
+					<td class="class="whitelisted-ip"">
+						<p></p> <br />
+					</td>
+					<td class="well">
+						<div>
+							<form novalidate ng-submit="updateWhiteListedIps()">
+
+								<table>
+									<tr>
+										<td><label>Id:</label></td>
+										<td><input type="text" ng-readonly=true
+											ng-model="selcetedIp.id" placeholder="Id"></td>
+									</tr>
+									<tr>
+										<td><label>Ip_Address:</label></td>
+										<td><input type="text" ng-model="selcetedIp.ip_address"
+											placeholder="ip"></td>
+									</tr>
+									<tr>
+										<td><label>Description:</label></td>
+										<td><input type="text" ng-model="selcetedIp.description"
+											placeholder="description"></td>
+									</tr>
+									<tr>
+										<td><label> Deleted:</label></td>
+										<td><input type="checkbox" ng-model="selcetedIp.deleted"></td>
+									</tr>
+									<tr>
+										<td>
+                      <input type='submit'  class="btn btn-primary"
+                             ng-disabled='!selcetedIp.id' value="Update"></td>
+									</tr>
+								</table>
+							</form>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</article>
+	</div>
+	<div class="row">
+		<h2 class="page-title txt-color-blueDark">
+			<label for='title'>Current WhiteListed IPs:</label>
+		</h2>
+	</div>
+	<div class="row">
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<table class="table table-bordered table-condensed">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Ip Address</th>
+						<th>Description</th>
+						<th>Deleted</th>
+						<th>Create Date</th>
+						<th>Update Date</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr class="whitelisted-ip"
+						ng-repeat="whitelistedIp in whitelistedIps"
+						ng-click='selectWhitelistedIp(whitelistedIp)'>
+						<td>{{whitelistedIp.id}}</td>
+						<td>{{whitelistedIp.ip_address}}</td>
+						<td>{{whitelistedIp.description}}</td>
+						<td><input type="checkbox" ng-disabled=true
+							ng-model="whitelistedIp.deleted"></td>
+						<td>{{whitelistedIp.created_date | date:'yyyy-MM-dd'}}</td>
+						<td>{{whitelistedIp.update_date | date:'yyyy-MM-dd HH:mm'}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</article>
+	</div>
+</div>

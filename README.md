@@ -75,10 +75,14 @@ gulp rename-app --old oldname --new newname 	--> Renames app
 ####1. Add a folder for your module
 Create a new folder for your feature under app/modules. All features should have their own folder. This is where all your feature-specific logic lives.
 
-####2. Add your module to the app initialization.
+####2. Add or script your files
+You'll need the actual controller and template file that you pointed your router at. These should live under the app/modules/%{feature_name}/ directory, which you created in step #1. All logic specific to your feature should go in this folder, but if you use directives or filters that have a general application, you should add them to app/directive or app/filters instead.
+When scripting your controller, you'll want to make sure you create a separate module and assign your controller to it.
+
+####3. Add your module to the app initialization.
 In app/app.js, you'll need to add your module to the list of modules that the app initializes. Your module should be named in the format of %{appName}.%{moduleName}. E.g. adminApp.featureOne.
 
-####3. Add a route for your feature.
+####4. Add a route for your feature.
 In app/config/routes.js you'll need to add a route for your feature. Here's an example route:
 ```
     .state('nav.customInsert', {
@@ -89,7 +93,7 @@ In app/config/routes.js you'll need to add a route for your feature. Here's an e
 ```
 Your feature should have the state 'nav.%{featureName}', since all features are subviews within the navigation layout that the 'nav' state loads. You'll also need to provide the location of your html subview template and the name of the controller for your feature.
 	
-####4. Add your feature to the navigation bar
+####5. Add your feature to the navigation bar
 In app/modules/main/nav.html, find the accordion-group that your feature fits in, or add a new one. The angular router we use (ui-router) uses anchor tags with ui-sref instead of the usual href. 'ui-sref' should match the name of the state you just added in step #3. Ex:
 ```
 		<accordion-group heading='OpsTools'>
@@ -101,9 +105,6 @@ In app/modules/main/nav.html, find the accordion-group that your feature fits in
 		</accordion-group>
 ```
 The value of 'heading' sets the accordion box text, the value of ui-sref is the name of the router state, and the li text should be the display name of your feature.
-	
-####5. Add or script your files
-You'll need the actual controller and template file that you pointed your router at. These should live under the app/modules/%{feature_name}/ directory, which you created in step #1. All logic specific to your feature should go in this folder, but if you use directives or filters that have a general application, you should add them to app/directive or app/filters instead.
 
 ####6. Add your JS files to index.html
 All newly created JS files need to be loaded through index.html.

@@ -110,4 +110,13 @@ angular.module('adminApp')
       }
     })
     
+    .state('nav.whitelistedIps', {
+      url: "/whitelistedIps",
+      templateUrl: "modules/white_listed_ips/white_listed_ips.html",
+      controller: "WhiteListedIpController",
+      breadcrumb: {
+        label: "White listed Ips"
+      }
+    })
+    
 }])

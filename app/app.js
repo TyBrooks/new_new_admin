@@ -13,5 +13,6 @@ window.adminApp = angular.module('adminApp', [
   'adminApp.elasticSearch',
   'adminApp.customInsert',
   'adminApp.sidDecoder',
-  'adminApp.accountSearch'
+  'adminApp.accountSearch',
+  'adminApp.whiteListedIps'
 ]);

@@ -36,6 +36,8 @@
       </div>
       
       <div id='progress'>
+        <div> Parsing Progress: </div>
+        <progressbar ng-class="{'progress-striped': true, 'active': parseProgress !== 100}" type='warning' max="100" value="fileReader.progress"></progressbar>
         <div> Upload Progress: </div>
         <progressbar ng-class="{'progress-striped active': uploader.progress !== 100}" max="100" value="uploader.progress"></progressbar>
       </div>
@@ -47,7 +49,7 @@
         <div class='file-control-radio'><input id='radio-ow' type='radio' ng-model="params.type" value="ow"> <label for='radio-ow'> Overwrite Whole List </label></div>
         
         <div id='buttons'>
-          <button class='btn btn-primary' ng-click='uploader.queue[0].upload()'> Upload </button>
+          <button class='btn btn-primary' ng-click='uploader.queue[0].upload()' ng-disabled='!fileReader.uploadReady'> Upload </button>
           <button class='btn btn-danger' ng-click='clearFile()'> Clear </button>
         </div>
       </div>

@@ -10,6 +10,10 @@ angular.module('adminApp.customInsert', [])
   //Options for type: alert, success, info
   $scope.messageType = null;
   
+  $scope.fileReader = new FileReader();
+  $scope.fileReader.progress = 0;
+  $scope.fileReader.uploadReady = false;
+  
   $scope.uploader = new FileUploader({
     filters:[{
       name: "CSV-only",
@@ -39,14 +43,22 @@ angular.module('adminApp.customInsert', [])
   
   $scope.clearFile = function() {
     angular.element( document.getElementById('file-input') ).val(null);
-        
+    
+    $scope.fileReader.progress = 0;
+    $scope.fileReader.uploadReady = false;
+
     $scope.uploader.clearQueue();
   }
   
-  $scope.setCallbacks = function( uploader ) {
+  $scope.setUploaderCallbacks = function( uploader ) {
     uploader.onWhenAddingFileFailed = function( filter ) {
       console.log("File adding failed. Failing filter: ", filter);
       $scope.displayMessage("Upload only supports CSV Files!", 4000, "alert");
+    }
+    
+    uploader.onAfterAddingFile = function( item ) {
+      var file = item._file;
+      $scope.fileReader.readAsText( file );
     }
     
     uploader.onSuccessItem = function() {
@@ -61,7 +73,20 @@ angular.module('adminApp.customInsert', [])
     }
   }
   
-  $scope.setCallbacks($scope.uploader);
+  $scope.setFileReaderCallbacks = function( fileReader ) {
+    fileReader.onprogress = function( e, fileName ) {
+      $scope.fileReader.progress = e.loaded / e.total * 100;
+      $scope.$digest();
+    }
+    
+    fileReader.onloadend = function( e ) {
+      $scope.fileReader.uploadReady = true;
+      $scope.$digest();
+    }
+  }
+  
+  $scope.setUploaderCallbacks($scope.uploader);
+  $scope.setFileReaderCallbacks($scope.fileReader);
   
 /*
  * Download section

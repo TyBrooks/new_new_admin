@@ -51,6 +51,27 @@ angular.module('adminApp.customInsert', [])
   }
   
   $scope.setUploaderCallbacks = function( uploader ) {
+    var formatParsedData = function( results ) {
+      var byUser = {};
+
+      _.forEach(results, function( cit ) {
+        var userId, keyword, urlOrOffer, country, type;
+        
+        if ( ( userId = cit["UserID"] ) && ( keyword = cit["Keyword"] ) && (urlOrOffer = cit["URL/Offer"] ) && ( country = cit["Country"] ) ) {
+          byUser[userId] = byUser[userId] || [];
+          
+          byUser[userId].push( {
+            term: keyword,
+            destination: urlOrOffer,
+            country: country
+          } )
+        }
+        
+      } );
+      
+      return byUser;
+    }
+    
     uploader.onWhenAddingFileFailed = function( filter ) {
       console.log("File adding failed. Failing filter: ", filter);
       $scope.displayMessage("Upload only supports CSV Files!", 4000, "alert");
@@ -58,7 +79,14 @@ angular.module('adminApp.customInsert', [])
     
     uploader.onAfterAddingFile = function( item ) {
       var file = item._file;
-      $scope.fileReader.readAsText( file );
+      Papa.parse(file, {
+        header: true,
+        complete: function( results, file ) {
+          var byUser = formatParsedData( results.data );
+          console.log("File parssed: ", byUser);
+        }
+      } );
+      // $scope.fileReader.readAsText( file );
     }
     
     uploader.onSuccessItem = function() {

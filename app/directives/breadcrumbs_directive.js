@@ -5,7 +5,7 @@ angular.module('adminApp.directives', [])
     restrict: "EA",
     replace: false,
     templateUrl: "directives/templates/breadcrumbs.html",
-    controller: ['$scope', '$state', function($scope, $state) {
+    controller: ['$scope', '$state', '$location', function($scope, $state, $location) {
       // This should probably be configured in a provider somewhere
       var homeSref = "nav.welcome";
       
@@ -13,7 +13,7 @@ angular.module('adminApp.directives', [])
       $scope.currentStateName = $state.$current.name;
       
       $scope.addState = function(state) {
-        $scope.stateList.unshift({ label: state.breadcrumb.label, sref: state.name })
+        $scope.stateList.unshift({ label: state.breadcrumb.label, sref: state.name, routeId: state.breadcrumb.routeId })
       }
       
       $scope.addRootState = function() {
@@ -37,10 +37,20 @@ angular.module('adminApp.directives', [])
         $scope.addRootState();
       }
       
+      $scope.routeBuilder = function(state){
+        if (state.routeId) {
+          var url = $location.path();
+          var id = state.routeId( url );
+          return state.sref + "({id: " + id + "})";
+        } else {
+          return state.sref;
+        }
+      };
+      
       $scope.$on("$stateChangeSuccess", function() {
         $scope.buildStateList();
       })
-      
+
       $scope.buildStateList();
       
     } ]

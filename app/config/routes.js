@@ -86,22 +86,28 @@ angular.module('adminApp')
       controller: "AccountDetailCtrl",
       breadcrumb: {
         label: "Account Details",
-        parent: "nav.accountSearch"
+        parent: "nav.accountSearch",
+        routeId: function( url ) {
+          return /\/accounts\/(\d+)/.exec(url)[1];
+        }
       }
     })
     
     .state('nav.userDetail', {
-      url: "/users/:id",
+      url: "/accounts/:accountId/users/:id",
       templateUrl: "modules/user_search/user_detail.html",
       controller: "UserDetailCtrl",
       breadcrumb: {
         label: "User Details",
-        parent: "nav.accountDetail"
+        parent: "nav.accountDetail",
+        routeId: function( url ) {
+          return /\/users\/(\d+)/.exec(url)[1];
+        }
       }
     })
     
     .state('nav.pluginDetail', {
-      url: "/plugins/:id",
+      url: "/accounts/:accountId/users/:userId/plugins/:id",
       templateUrl: "modules/user_search/plugin_detail.html",
       controller: "PluginDetailCtrl",
       breadcrumb: {

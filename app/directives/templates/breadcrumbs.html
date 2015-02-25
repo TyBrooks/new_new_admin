@@ -1,5 +1,5 @@
 <span ng-repeat='state in stateList'>
-	<a ui-sref='{{state.sref}}' ng-show='!$last'>
+	<a ui-sref='{{routeBuilder(state)}}' ng-show='!$last'>
 		<span>{{state.label}}</span>
 	</a>
 	<span ng-show='$last'>{{state.label}}</span>

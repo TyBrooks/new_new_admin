@@ -145,10 +145,10 @@
                         <tbody >
                             <tr ng-repeat="plugin in plugins">
                                 <td>
-                                    <a ui-sref="nav.pluginDetail({id: plugin.id})">{{plugin.type}}</a>
+                                    <a ui-sref="nav.pluginDetail({id: plugin.id, userId: user.id, accountId: user.accountId })">{{plugin.type}}</a>
                                 </td>
                                 <td>
-                                    <a ng-if="plugin.plugin_user_id != 'N/A'" ui-sref='nav.userDetail({id: plugin.plugin_user_id})'>{{plugin.plugin_user_name}}</a>
+                                    <a ng-if="plugin.plugin_user_id != 'N/A'" ui-sref='nav.userDetail({id: plugin.plugin_user_id, accountId: user.accountId})'>{{plugin.plugin_user_name}}</a>
                                     <a ng-if="plugin.plugin_user_id == 'N/A'">{{plugin.plugin_user_name}}</a>
                                 </td>
                                 <td>{{plugin.status}}</td>

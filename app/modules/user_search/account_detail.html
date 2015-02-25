@@ -190,7 +190,7 @@
                         <tbody>
                         <tr ng-repeat="user in users">
                             <td>{{user.id}}</td>
-                            <td><a ui-sref='nav.userDetail({id: user.id, :accountId: user.accountId})'>{{user.name}}</a></td>
+                            <td><a ui-sref='nav.userDetail({id: user.id, accountId: account.id})'>{{user.name}}</a></td>
                             <td>{{user.apiKey}}</td>
                             <td>{{user.createDate | date}}</td>
                             <td>{{revShares[user.id] ? revShares[user.id] : 'Loading...'}}</td>

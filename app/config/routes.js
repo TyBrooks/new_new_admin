@@ -87,8 +87,10 @@ angular.module('adminApp')
       breadcrumb: {
         label: "Account Details",
         parent: "nav.accountSearch",
-        routeId: function( url ) {
-          return /\/accounts\/(\d+)/.exec(url)[1];
+        routeParams: function( url ) {
+          return {
+            id: /\/accounts\/(\d+)/.exec(url)[1]
+          }
         }
       }
     })
@@ -100,8 +102,11 @@ angular.module('adminApp')
       breadcrumb: {
         label: "User Details",
         parent: "nav.accountDetail",
-        routeId: function( url ) {
-          return /\/users\/(\d+)/.exec(url)[1];
+        routeParams: function( url ) {
+          return {
+            id:         /\/users\/(\d+)/.exec(url)[1],
+            accountId:  /\/accounts\/(\d+)/.exec(url)[1]
+          }
         }
       }
     })

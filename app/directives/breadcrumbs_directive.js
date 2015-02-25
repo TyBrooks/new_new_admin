@@ -13,7 +13,7 @@ angular.module('adminApp.directives', [])
       $scope.currentStateName = $state.$current.name;
       
       $scope.addState = function(state) {
-        $scope.stateList.unshift({ label: state.breadcrumb.label, sref: state.name, routeId: state.breadcrumb.routeId })
+        $scope.stateList.unshift({ label: state.breadcrumb.label, sref: state.name, routeParams: state.breadcrumb.routeParams })
       }
       
       $scope.addRootState = function() {
@@ -38,10 +38,20 @@ angular.module('adminApp.directives', [])
       }
       
       $scope.routeBuilder = function(state){
-        if (state.routeId) {
+        var buildParamsString = function( params ) {
+          var string = _.reduce( params, function( result, value, key) {
+            return result + " " + key + " : " + value + ", ";
+          }, "({" );
+          
+          return string.slice(0, -2) + " })";
+        }
+        
+        if (state.routeParams) {
           var url = $location.path();
-          var id = state.routeId( url );
-          return state.sref + "({id: " + id + "})";
+          var params = state.routeParams( url );
+          var paramsString = buildParamsString( params );
+          
+          return state.sref + paramsString;
         } else {
           return state.sref;
         }

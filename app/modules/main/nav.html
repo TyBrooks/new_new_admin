@@ -1,6 +1,6 @@
 <ng-include src="'modules/main/nav.header.html'"></ng-include>
 
-<div id='nav-panel'>
+<div id='nav-panel' ng-show='showNav'>
 	<div class='user-section'>
 		Admin - {{user.name}}
 	</div>
@@ -30,7 +30,7 @@
 	</accordion>
 </div>
 
-<div id='main-panel'>
+<div id='main-panel' ng-class='{"no-nav" : !showNav }'>
 	<div class='breadcrumb-section'>
 		<breadcrumbs></breadcrumbs>
 	</div>

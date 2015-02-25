@@ -20,6 +20,10 @@ $nav-panel-bg-color: #F5F5F5;
   border-bottom: 1px solid grey;
   height: $header-height;
   
+  & > div {
+    display: inline-block;
+  }
+  
   #logo {
     margin-top: 0 !important;
   }
@@ -76,6 +80,10 @@ $nav-panel-bg-color: #F5F5F5;
 #main-panel {
   margin-left: $nav-panel-width;
   padding: 0;
+  
+  &.no-nav {
+    margin-left: 0 !important;
+  }
   
   .breadcrumb-section {
     height: $sub-header-height;
